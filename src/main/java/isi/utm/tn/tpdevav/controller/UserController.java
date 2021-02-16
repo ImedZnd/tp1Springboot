@@ -30,4 +30,13 @@ public class UserController {
     {
         return new ResponseEntity<>(userService.getAll(), HttpStatus.OK);
     }
+
+
+    @CrossOrigin(origins = "*")
+    @PostMapping("/delete")
+    public ResponseEntity<User> deleteUser(@Valid @RequestBody Long id)
+    {
+        userService.deleteById(id);
+        return new ResponseEntity<>( HttpStatus.OK);
+    }
 }
