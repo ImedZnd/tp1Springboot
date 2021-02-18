@@ -39,4 +39,11 @@ public class UserController {
         userService.deleteById(id);
         return new ResponseEntity<>( HttpStatus.OK);
     }
+    @CrossOrigin(origins = "*")
+    @PostMapping("/test")
+    public String test(@Valid @RequestBody Long id)
+    {
+        userService.deleteById(id);
+        return "hello world";
+    }
 }
