@@ -3,6 +3,7 @@ package isi.utm.tn.tpdevav.serviceImp;
 import isi.utm.tn.tpdevav.model.User;
 import isi.utm.tn.tpdevav.repository.UserRepository;
 import isi.utm.tn.tpdevav.service.UserService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -11,6 +12,7 @@ import java.util.Optional;
 @Service
 public class UserServiceImp implements UserService {
 
+    @Autowired
     UserRepository userRepository;
 
     @Override

@@ -2,6 +2,7 @@ package isi.utm.tn.tpdevav.controller;
 
 import isi.utm.tn.tpdevav.model.User;
 import isi.utm.tn.tpdevav.service.UserService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -13,6 +14,7 @@ import java.util.List;
 @RequestMapping("/api/users")
 public class UserController {
 
+    @Autowired
     UserService userService;
 
     @CrossOrigin(origins = "*")
@@ -25,25 +27,24 @@ public class UserController {
     }
 
     @CrossOrigin(origins = "*")
-    @PostMapping("/all")
-    public ResponseEntity<List> allUsers(@Valid @RequestBody User user)
+    @GetMapping("/all")
+    public ResponseEntity<List> allUsers()
     {
         return new ResponseEntity<>(userService.getAll(), HttpStatus.OK);
     }
 
-
     @CrossOrigin(origins = "*")
-    @PostMapping("/delete")
-    public ResponseEntity<User> deleteUser(@Valid @RequestBody Long id)
+    @PostMapping("/delete/{id}")
+    public ResponseEntity<User> deleteUser(@PathVariable("id") Long id)
     {
         userService.deleteById(id);
         return new ResponseEntity<>( HttpStatus.OK);
     }
+
     @CrossOrigin(origins = "*")
-    @PostMapping("/test")
-    public String test(@Valid @RequestBody Long id)
+    @GetMapping("/test")
+    public String test()
     {
-        userService.deleteById(id);
         return "hello world";
     }
 }
