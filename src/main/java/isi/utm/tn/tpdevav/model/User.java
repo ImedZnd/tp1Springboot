@@ -17,12 +17,9 @@ public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Long user_id;
 
-    @NotBlank
-    private String name;
 
-    @NotBlank
     private String surname;
 
     private Date birthdate;
@@ -30,17 +27,18 @@ public class User {
 
     private String address;
 
-    @NotBlank
     private String cin ;
+
+    private  String role;
+
+    @NotBlank
+    private String name;
 
     @NotBlank
     private String password;
 
     @NotBlank
     private  String username;
-
-
-    private  String role;
 
     @NotBlank
     private String  email;
