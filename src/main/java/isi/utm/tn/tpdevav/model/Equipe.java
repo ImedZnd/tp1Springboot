@@ -21,7 +21,6 @@ public class Equipe {
     private String name;
 
     @ManyToOne
-    @JoinColumn(name = "match_id", nullable = false)
     private Match match;
 
     @OneToMany(mappedBy = "equipe", fetch = FetchType.LAZY)

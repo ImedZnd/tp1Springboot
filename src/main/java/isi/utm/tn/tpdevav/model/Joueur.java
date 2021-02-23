@@ -10,7 +10,6 @@ import javax.persistence.*;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "joueur")
 public class Joueur {
 
     @Id
@@ -20,6 +19,5 @@ public class Joueur {
     private String name;
 
     @ManyToOne
-    @JoinColumn(name = "match_id", nullable = false)
-    private Match match;
+    private Equipe equipe;
 }
