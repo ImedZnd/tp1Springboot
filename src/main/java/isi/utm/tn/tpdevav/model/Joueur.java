@@ -10,7 +10,11 @@ import javax.persistence.*;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
+<<<<<<< HEAD
 @Table(name = "joueurs")
+=======
+@Table(name="joueur")
+>>>>>>> refs/remotes/origin/main
 public class Joueur {
 
     @Id
@@ -20,5 +24,6 @@ public class Joueur {
     private String name;
 
     @ManyToOne
+    @JoinColumn(name = "equipe_id", nullable = false)
     private Equipe equipe;
 }

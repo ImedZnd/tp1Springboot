@@ -26,5 +26,9 @@ public class Equipe {
 
     @OneToMany(mappedBy = "equipe", fetch = FetchType.LAZY)
     private Set<Joueur> joueurs;
+<<<<<<< HEAD
     
+=======
+
+>>>>>>> refs/remotes/origin/main
 }

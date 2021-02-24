@@ -13,7 +13,11 @@ import javax.persistence.*;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
+<<<<<<< HEAD
 @Table(name = "arbitres")
+=======
+@Table(name="arbitre")
+>>>>>>> refs/remotes/origin/main
 public class Arbitre {
 
     @Id
