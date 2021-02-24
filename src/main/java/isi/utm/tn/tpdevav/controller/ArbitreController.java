@@ -16,10 +16,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import isi.utm.tn.tpdevav.model.Arbitre;
-import isi.utm.tn.tpdevav.model.User;
-import isi.utm.tn.tpdevav.service.*;
+
+import isi.utm.tn.tpdevav.service.ArbitreService;
+
+
 @RestController
-@RequestMapping("/api/Arbitres")
+@RequestMapping("/api/Arbitre")
 public class ArbitreController {
 	
 	@Autowired
@@ -44,7 +46,7 @@ public class ArbitreController {
 
 	    @CrossOrigin(origins = "*")
 	    @PostMapping("/delete/{id}")
-	    public ResponseEntity<User> deleteArbitre(@PathVariable("id") Long id)
+	    public ResponseEntity<Arbitre> deleteArbitre(@PathVariable("id") Long id)
 	    {
 	    	arbitreService.deleteArbitreByID(id);;
 	        return new ResponseEntity<>( HttpStatus.OK);

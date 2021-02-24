@@ -15,11 +15,10 @@ public class ArbitreServiceImp implements ArbitreService  {
 	
 	
 	@Autowired
-	ArbitreRepository arbitreRepository;
+	private ArbitreRepository arbitreRepository;
 
 	@Override
 	public Arbitre addArbitre(Arbitre arbitre) {
-		// TODO Auto-generated method stub
 		return arbitreRepository.save(arbitre);
 	}
 
@@ -44,7 +43,7 @@ public class ArbitreServiceImp implements ArbitreService  {
 	@Override
 	public Arbitre findArbitrebyname(String nameArbitre) {
 		// TODO Auto-generated method stub
-		return arbitreRepository.findArbitrebyname(nameArbitre);
+		return arbitreRepository.findArbitreByName(nameArbitre);
 	}
 
 	@Override
