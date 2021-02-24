@@ -1,7 +1,5 @@
 package isi.utm.tn.tpdevav.model;
 
-import java.io.Serializable;
-import java.util.Set;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
