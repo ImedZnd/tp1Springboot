@@ -6,8 +6,10 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 
+@JsonIgnoreProperties({"hibernateLazyInitializer","handler","arbitres"})
 @Entity
 @Table(name="matchs")
 public class Match {
