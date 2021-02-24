@@ -7,7 +7,7 @@ import isi.utm.tn.tpdevav.model.Arbitre;
 
 @Repository
 public interface ArbitreRepository extends JpaRepository<Arbitre, Long> {
-	Arbitre findArbitreByName(String nameArbitre);
+	Arbitre findArbitreByName(String name);
 	
 
 }

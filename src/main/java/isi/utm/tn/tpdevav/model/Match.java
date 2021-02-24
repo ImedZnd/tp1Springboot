@@ -6,9 +6,8 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 
-@Data
-@NoArgsConstructor
-@AllArgsConstructor
+
+
 @Entity
 @Table(name="matchs")
 public class Match {
@@ -25,6 +24,56 @@ public class Match {
 
     @OneToMany(mappedBy = "match", fetch = FetchType.LAZY,cascade = CascadeType.ALL)
     private Set <Equipe>  equipes;
+
+    public Match() {}
+   
+	public Match(Long match_id, String name, Set<Arbitre> arbitres, Set<Equipe> equipes) {
+		
+		this.match_id = match_id;
+		this.name = name;
+		this.arbitres = arbitres;
+		this.equipes = equipes;
+	}
+
+
+	public Long getMatch_id() {
+		return match_id;
+	}
+
+
+	public void setMatch_id(Long match_id) {
+		this.match_id = match_id;
+	}
+
+
+	public String getName() {
+		return name;
+	}
+
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+
+	public Set<Arbitre> getArbitres() {
+		return arbitres;
+	}
+
+
+	public void setArbitres(Set<Arbitre> arbitres) {
+		this.arbitres = arbitres;
+	}
+
+
+	public Set<Equipe> getEquipes() {
+		return equipes;
+	}
+
+
+	public void setEquipes(Set<Equipe> equipes) {
+		this.equipes = equipes;
+	}
    
 
 
