@@ -10,6 +10,7 @@ import javax.persistence.*;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
+@Table(name="joueur")
 public class Joueur {
 
     @Id
@@ -19,5 +20,6 @@ public class Joueur {
     private String name;
 
     @ManyToOne
+    @JoinColumn(name = "equipe_id", nullable = false)
     private Equipe equipe;
 }

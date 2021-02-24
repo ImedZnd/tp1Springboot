@@ -12,6 +12,7 @@ import javax.persistence.*;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
+@Table(name="matche")
 public class Match {
 
     @Id
@@ -24,6 +25,6 @@ public class Match {
     private Set <Arbitre>  arbitres;
 
     @OneToMany(mappedBy = "match", fetch = FetchType.LAZY)
-    private Set <Equipe>  Equipe;
+    private Set <Equipe>  equipes;
 
 }
