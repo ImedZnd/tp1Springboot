@@ -12,7 +12,7 @@ public interface ArbitreService {
 	void deleteArbitreByID(Long id);
 	Arbitre updateArbitre(Arbitre arbitre);
     List<Arbitre> findAllArbitre();
-    Arbitre findArbitrebyname(String nameArbitre);
-    Arbitre findArbitrebyid(Long id);
+    Arbitre findArbitreByName(String nameArbitre);
+    Arbitre findArbitreById(Long id);
     
 }

@@ -41,13 +41,13 @@ public class ArbitreServiceImp implements ArbitreService  {
 	}
 
 	@Override
-	public Arbitre findArbitrebyname(String nameArbitre) {
+	public Arbitre findArbitreByName(String nameArbitre) {
 		// TODO Auto-generated method stub
 		return arbitreRepository.findArbitreByName(nameArbitre);
 	}
 
 	@Override
-	public Arbitre findArbitrebyid(Long id) {
+	public Arbitre findArbitreById(Long id) {
 		// TODO Auto-generated method stub
 		return arbitreRepository.getOne(id);
 	}
