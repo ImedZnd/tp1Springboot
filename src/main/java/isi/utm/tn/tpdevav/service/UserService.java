@@ -5,6 +5,8 @@ import isi.utm.tn.tpdevav.model.User;
 import java.util.List;
 import java.util.Optional;
 
+import javax.validation.Valid;
+
 public interface UserService {
 
     User addOne(User user);
@@ -13,4 +15,5 @@ public interface UserService {
     User getByUsername(String username);
     User getByEmail(String username);
     List<User> getAll();
+	User updateUser(User user);
 }

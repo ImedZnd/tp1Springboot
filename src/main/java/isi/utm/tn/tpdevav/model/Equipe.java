@@ -1,6 +1,5 @@
 package isi.utm.tn.tpdevav.model;
 
-
 import javax.persistence.*;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
@@ -25,15 +24,36 @@ public class Equipe {
     @OneToMany(mappedBy = "equipe", fetch = FetchType.LAZY)
     private Set<Joueur> joueurs;
     
+    @ManyToOne
+    @JoinColumn(name = "tournoi_id", nullable = false)
+    private Tournoi tournoi;
+    
     public Equipe() {}    
 
-	public Equipe(Long equipe_id, String name, Match match, Set<Joueur> joueurs) {
-		
+	
+
+	public Equipe(Long equipe_id, String name, Match match, Set<Joueur> joueurs, Tournoi tournoi) {
+		super();
 		this.equipe_id = equipe_id;
 		this.name = name;
 		this.match = match;
 		this.joueurs = joueurs;
+		this.tournoi = tournoi;
 	}
+
+
+
+	public Tournoi getTournoi() {
+		return tournoi;
+	}
+
+
+
+	public void setTournoi(Tournoi tournoi) {
+		this.tournoi = tournoi;
+	}
+
+
 
 	public Long getEquipe_id() {
 		return equipe_id;
