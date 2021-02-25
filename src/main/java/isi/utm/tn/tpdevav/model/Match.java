@@ -1,8 +1,6 @@
 package isi.utm.tn.tpdevav.model;
 import java.util.Set;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+
 
 import javax.persistence.*;
 
