@@ -41,4 +41,9 @@ public class UserServiceImp implements UserService {
     public List<User> getAll(){
         return userRepository.findAll();
     }
+	@Override
+	public User updateUser(User user) {
+		
+		return userRepository.saveAndFlush(user);
+	}
 }

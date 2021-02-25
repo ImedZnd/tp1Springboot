@@ -21,7 +21,7 @@ public class Billet {
 
     private String num_place;
     
-    private String catégorie;
+    private String categorie;
     
     private String prix;
     
@@ -36,11 +36,11 @@ public class Billet {
     public Billet() {}
     
 
-	public Billet(Long billet_id, String num_place, String catégorie, String prix, Spectateur spectateur, Match match) {
+	public Billet(Long billet_id, String num_place, String categorie, String prix, Spectateur spectateur, Match match) {
 		super();
 		this.billet_id = billet_id;
 		this.num_place = num_place;
-		this.catégorie = catégorie;
+		this.categorie = categorie;
 		this.prix = prix;
 		this.spectateur = spectateur;
 		this.match = match;
@@ -63,11 +63,11 @@ public class Billet {
 	}
 
 	public String getCatégorie() {
-		return catégorie;
+		return categorie;
 	}
 
 	public void setCatégorie(String catégorie) {
-		this.catégorie = catégorie;
+		this.categorie = catégorie;
 	}
 
 	public String getPrix() {

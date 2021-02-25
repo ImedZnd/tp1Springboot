@@ -21,7 +21,7 @@ import isi.utm.tn.tpdevav.service.ArbitreService;
 
 
 @RestController
-@RequestMapping("/api/Arbitre")
+@RequestMapping("/api/arbitre")
 public class ArbitreController {
 	
 	@Autowired

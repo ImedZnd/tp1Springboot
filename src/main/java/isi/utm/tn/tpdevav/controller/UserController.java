@@ -1,5 +1,6 @@
 package isi.utm.tn.tpdevav.controller;
 
+import isi.utm.tn.tpdevav.model.Spectateur;
 import isi.utm.tn.tpdevav.model.User;
 import isi.utm.tn.tpdevav.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -43,13 +44,13 @@ public class UserController {
     }
 
     @CrossOrigin(origins = "*")
-    @GetMapping("/test")
-    public String test()
-    {
-        return "hello world";
-    }
-    
-    
+	 @PutMapping("/update")
+	 public ResponseEntity<User> updateUser(@Valid @RequestBody User user)
+	 {
+    	User user1 = userService.updateUser(user);
+	    if(user1 == null) new ResponseEntity<>(user,HttpStatus.CONFLICT);
+	    return new ResponseEntity<>(user1, HttpStatus.OK);
+	    }  
     
     
     
