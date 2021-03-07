@@ -12,7 +12,6 @@ public interface UserService {
     User addOne(User user);
     void deleteById(Long id);
     Optional<User> getById(Long id);
-    User getByUsername(String username);
     User getByEmail(String username);
     List<User> getAll();
 	User updateUser(User user);

@@ -39,7 +39,10 @@ public class User {
     private String  email;
     
     
-    public User() {}
+    
+
+
+	public User() {}
     
 
 	public User(Long user_id, String surname, Date birthdate, String address, String cin, String role,

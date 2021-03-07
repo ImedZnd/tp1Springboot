@@ -5,6 +5,8 @@ import isi.utm.tn.tpdevav.model.AuthRequest;
 import isi.utm.tn.tpdevav.model.Spectateur;
 import isi.utm.tn.tpdevav.model.User;
 import isi.utm.tn.tpdevav.service.UserService;
+import isi.utm.tn.tpdevav.serviceImp.UserServiceImp;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -21,6 +23,10 @@ public class UserController {
 
 	@Autowired
 	UserService userService;
+	
+	@Autowired
+	UserServiceImp userServiceImp;
+	
 	@Autowired
 	JwtUtil jwtUtil;
 	@Autowired
@@ -40,7 +46,7 @@ public class UserController {
 	@CrossOrigin(origins = "*")
 	@PostMapping("/add")
 	public ResponseEntity<User> addUser(@Valid @RequestBody User user) {
-		User user1 = userService.addOne(user);
+		User user1 = userServiceImp.save(user);
 		if (user1 == null)
 			new ResponseEntity<>(user, HttpStatus.CONFLICT);
 		return new ResponseEntity<>(user1, HttpStatus.OK);
