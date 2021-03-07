@@ -4,13 +4,17 @@ import isi.utm.tn.tpdevav.model.User;
 import isi.utm.tn.tpdevav.repository.UserRepository;
 import isi.utm.tn.tpdevav.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
 @Service
-public class UserServiceImp implements UserService {
+public class UserServiceImp implements UserService,UserDetailsService {
 
     @Autowired
     UserRepository userRepository;
@@ -27,10 +31,8 @@ public class UserServiceImp implements UserService {
     public Optional<User> getById(Long id){
         return userRepository.findById(id);
     }
-    @Override
-    public  User getByUsername(String username){
-        return userRepository.findPersonByUsername(username);
-    }
+   
+    
 
     @Override
     public  User getByEmail(String username){
@@ -46,4 +48,18 @@ public class UserServiceImp implements UserService {
 		
 		return userRepository.saveAndFlush(user);
 	}
+	
+	
+
+    @Override
+    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+        User user = userRepository.findByUsername(username);
+        return new org.springframework.security.core.userdetails.User(user.getUsername(), user.getPassword(), new ArrayList<>());
+    }
+	@Override
+	public User getByUsername(String username) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	
 }
