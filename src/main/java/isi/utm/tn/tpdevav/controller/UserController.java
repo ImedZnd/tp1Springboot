@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/users")
@@ -33,22 +34,26 @@ public class UserController {
 	AuthenticationManager authenticationManager;
 	
 	@PostMapping("/authenticate")
-	public String generateToken(@RequestBody AuthRequest authRequest) throws Exception {
+	public String generateToken(@RequestBody User user) throws Exception {
 		try {
 			authenticationManager.authenticate(
-					new UsernamePasswordAuthenticationToken(authRequest.getUserName(), authRequest.getPassword()));
+					new UsernamePasswordAuthenticationToken(user.getUsername(), user.getPassword()));
 		} catch (Exception ex) {
+			ex.printStackTrace();
 			throw new Exception("inavalid username/password");
 		}
-		return jwtUtil.generateToken(authRequest.getUserName());
+		return jwtUtil.generateToken(user.getUsername());
 	}
 
 	@CrossOrigin(origins = "*")
 	@PostMapping("/add")
 	public ResponseEntity<User> addUser(@Valid @RequestBody User user) {
-		User user1 = userServiceImp.save(user);
+		User userCheck = userService.getByUsername(user.getUsername());
+		if(userCheck != null)
+			return new ResponseEntity<>(user, HttpStatus.CONFLICT);
+		User user1 = userService.addOne(user);
 		if (user1 == null)
-			new ResponseEntity<>(user, HttpStatus.CONFLICT);
+			return new ResponseEntity<>(user, HttpStatus.CONFLICT);
 		return new ResponseEntity<>(user1, HttpStatus.OK);
 	}
 
@@ -66,12 +71,19 @@ public class UserController {
 	}
 
 	@CrossOrigin(origins = "*")
-	@PutMapping("/update")
-	public ResponseEntity<User> updateUser(@Valid @RequestBody User user) {
-		User user1 = userService.updateUser(user);
-		if (user1 == null)
-			new ResponseEntity<>(user, HttpStatus.CONFLICT);
-		return new ResponseEntity<>(user1, HttpStatus.OK);
-	}
+    @PutMapping("/update/{id}")
+    public ResponseEntity<User> updateUser(@Valid @RequestBody User user,@PathVariable long id) {
+		
+        Optional<User> userOptional = userService.getById(id);
+        if (!userOptional.isPresent())
+            return ResponseEntity.notFound().build();
+		User userCheck = userService.getByUsername(user.getUsername());
+		if(userCheck != null)
+			return new ResponseEntity<>(user, HttpStatus.CONFLICT);
+        user.setUser_id(id);
+        User user1 = userService.updateUser(user);
+        if (user1==null) new ResponseEntity<>(user, HttpStatus.CONFLICT);
+        return new ResponseEntity<>(user1, HttpStatus.OK);
+    }
 
 }

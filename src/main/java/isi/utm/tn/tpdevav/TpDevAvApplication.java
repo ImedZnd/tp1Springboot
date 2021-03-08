@@ -23,7 +23,7 @@ public class TpDevAvApplication {
 	public void initUser() {
 		
 		List<User> users = Stream.of(
-                new User((long)1,"bo7",null,"tunis","13013222","admin","ahmed","root","root","root@gmail.com")
+				new User("root","root","root@gmail.com","ahmed",null,null,null)
         ).collect(Collectors.toList());
         repo.saveAll(users);
     }

@@ -24,6 +24,7 @@ public class UserServiceImp implements UserService,UserDetailsService {
 
     @Override
     public User addOne(User user){
+        user.setPassword(bcryptEncoder.encode(user.getPassword()));
         return userRepository.save(user);
     }
     @Override
@@ -38,8 +39,13 @@ public class UserServiceImp implements UserService,UserDetailsService {
     
 
     @Override
-    public  User getByEmail(String username){
-        return userRepository.findPersonByEmail(username);
+    public  User getByEmail(String email){
+        return userRepository.findPersonByEmail(email);
+    }
+
+    @Override
+    public User getByUsername(String username){
+        return userRepository.findByUsername(username);
     }
 
     @Override
@@ -48,7 +54,8 @@ public class UserServiceImp implements UserService,UserDetailsService {
     }
 	@Override
 	public User updateUser(User user) {
-		
+		if(user.getPassword() != null)
+            user.setPassword(bcryptEncoder.encode(user.getPassword()));
 		return userRepository.saveAndFlush(user);
 	}
 	
@@ -59,15 +66,6 @@ public class UserServiceImp implements UserService,UserDetailsService {
         User user = userRepository.findByUsername(username);
         return new org.springframework.security.core.userdetails.User(user.getUsername(), user.getPassword(), new ArrayList<>());
     }
-	
-    public User save(User user) {
-		User newUser = new User();
-		newUser.setName(user.getName());
-		newUser.setEmail(user.getEmail());
-		newUser.setUsername(user.getUsername());
-		newUser.setPassword(bcryptEncoder.encode(user.getPassword()));
-		return userRepository.save(newUser);
-	}
-    
+
 	
 }

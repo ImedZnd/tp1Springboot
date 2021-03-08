@@ -9,72 +9,47 @@ import java.util.Date;
 @Entity
 @Table(name = "user")
 public class User {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long user_id;
-
-
-    private String surname;
-
-    private Date birthdate;
-
-
-    private String address;
-
-    private String cin ;
-
-    private  String role;
-
-    @NotBlank
-    private String name;
-
-    @NotBlank
-    private String password;
+	
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long user_id;
 
     @NotBlank
     private  String username;
 
+	@NotBlank
+    private String password;
+	
     @NotBlank
     private String  email;
-    
-    
-    
+
+    @NotBlank
+    private String name;
+	
+    private Date birthdate;
+
+    private String address;
+
+    private  String role;
 
 
 	public User() {}
     
 
-	public User(Long user_id, String surname, Date birthdate, String address, String cin, String role,
-			@NotBlank String name, @NotBlank String password, @NotBlank String username, @NotBlank String email) {
-		
-		this.user_id = user_id;
-		this.surname = surname;
+	
+	public User(@NotBlank String username, @NotBlank String password, @NotBlank String email, @NotBlank String name,
+			Date birthdate, String address, String role) {
+		this.username = username;
+		this.password = password;
+		this.email = email;
+		this.name = name;
 		this.birthdate = birthdate;
 		this.address = address;
-		this.cin = cin;
 		this.role = role;
-		this.name = name;
-		this.password = password;
-		this.username = username;
-		this.email = email;
 	}
 
-	public Long getUser_id() {
-		return user_id;
-	}
 
-	public void setUser_id(Long user_id) {
-		this.user_id = user_id;
-	}
-
-	public String getSurname() {
-		return surname;
-	}
-
-	public void setSurname(String surname) {
-		this.surname = surname;
-	}
+	
 
 	public Date getBirthdate() {
 		return birthdate;
@@ -90,14 +65,6 @@ public class User {
 
 	public void setAddress(String address) {
 		this.address = address;
-	}
-
-	public String getCin() {
-		return cin;
-	}
-
-	public void setCin(String cin) {
-		this.cin = cin;
 	}
 
 	public String getRole() {
@@ -139,7 +106,18 @@ public class User {
 	public void setEmail(String email) {
 		this.email = email;
 	}
-    
+
+
+
+	public Long getUser_id() {
+		return user_id;
+	}
+
+
+
+	public void setUser_id(Long user_id) {
+		this.user_id = user_id;
+	}    
     
     
     
