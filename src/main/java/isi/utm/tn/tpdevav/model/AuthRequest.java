@@ -22,16 +22,6 @@ public class AuthRequest {
 	public void setPassword(String password) {
 		this.password = password;
 	}
-
-	public AuthRequest(String userName, String password) {
-		
-		this.userName = userName;
-		this.password = password;
-	}
-
-	public AuthRequest() {
-		
-	}
-
 	
+
 }
