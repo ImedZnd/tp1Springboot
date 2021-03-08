@@ -1,8 +1,10 @@
 package isi.utm.tn.tpdevav.model;
 
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import javax.persistence.*;
 import java.util.Date;
+import java.util.Set;
 
 
 
@@ -30,7 +32,11 @@ public class User {
 
     private String address;
 
-    private  String role;
+	@ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @JoinTable(name = "user_roles", joinColumns = {
+            @JoinColumn(name = "user_id") }, inverseJoinColumns = {
+            @JoinColumn(name = "role_id") })
+    private Set<Role> roles;
 
 
 	public User() {}
@@ -38,14 +44,13 @@ public class User {
 
 	
 	public User(@NotBlank String username, @NotBlank String password, @NotBlank String email, @NotBlank String name,
-			Date birthdate, String address, String role) {
+			Date birthdate, String address) {
 		this.username = username;
 		this.password = password;
 		this.email = email;
 		this.name = name;
 		this.birthdate = birthdate;
 		this.address = address;
-		this.role = role;
 	}
 
 
@@ -65,14 +70,6 @@ public class User {
 
 	public void setAddress(String address) {
 		this.address = address;
-	}
-
-	public String getRole() {
-		return role;
-	}
-
-	public void setRole(String role) {
-		this.role = role;
 	}
 
 	public String getName() {
@@ -117,8 +114,19 @@ public class User {
 
 	public void setUser_id(Long user_id) {
 		this.user_id = user_id;
+	}
+
+
+
+	public Set<Role> getRoles() {
+		return roles;
+	}
+
+
+
+	public void setRoles(Set<Role> roles) {
+		this.roles = roles;
 	}    
-    
     
     
 }
