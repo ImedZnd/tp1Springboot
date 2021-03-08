@@ -10,6 +10,7 @@ import isi.utm.tn.tpdevav.serviceImp.UserServiceImp;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.web.bind.annotation.*;
@@ -46,6 +47,7 @@ public class UserController {
 	}
 
 	@CrossOrigin(origins = "*")
+	@PreAuthorize("hasRole('ADMIN')")
 	@PostMapping("/add")
 	public ResponseEntity<User> addUser(@Valid @RequestBody User user) {
 		User userCheck = userService.getByUsername(user.getUsername());
@@ -58,12 +60,14 @@ public class UserController {
 	}
 
 	@CrossOrigin(origins = "*")
+	@PreAuthorize("hasRole('ADMIN')")
 	@GetMapping("/all")
 	public ResponseEntity<List> allUsers() {
 		return new ResponseEntity<>(userService.getAll(), HttpStatus.OK);
 	}
 
 	@CrossOrigin(origins = "*")
+	@PreAuthorize("hasRole('ADMIN')")
 	@PostMapping("/delete/{id}")
 	public ResponseEntity<User> deleteUser(@PathVariable("id") Long id) {
 		userService.deleteById(id);
@@ -71,6 +75,7 @@ public class UserController {
 	}
 
 	@CrossOrigin(origins = "*")
+	@PreAuthorize("hasRole('ADMIN')")
     @PutMapping("/update/{id}")
     public ResponseEntity<User> updateUser(@Valid @RequestBody User user,@PathVariable long id) {
 		
