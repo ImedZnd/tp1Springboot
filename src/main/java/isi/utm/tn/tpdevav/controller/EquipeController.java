@@ -7,6 +7,7 @@ import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -27,6 +28,7 @@ public class EquipeController {
     EquipeService equipeService;
 
     @CrossOrigin(origins = "*")
+    @PreAuthorize("hasRole('ADMIN')")
     @PostMapping("/add")
     public ResponseEntity<Equipe> addEquipe(@Valid @RequestBody Equipe equipe)
     {
@@ -36,6 +38,7 @@ public class EquipeController {
     }
 
     @CrossOrigin(origins = "*")
+    @PreAuthorize("hasAnyRole('USER', 'ADMIN')")
     @GetMapping("/all")
     public ResponseEntity<List> allEquipe()
     {
@@ -43,6 +46,7 @@ public class EquipeController {
     }
 
     @CrossOrigin(origins = "*")
+    @PreAuthorize("hasRole('ADMIN')")
     @PostMapping("/delete/{id}")
     public ResponseEntity<Equipe> deleteEquipe(@PathVariable("id") Long id)
     {
@@ -51,6 +55,7 @@ public class EquipeController {
     }
 
     @CrossOrigin(origins = "*")
+    @PreAuthorize("hasRole('ADMIN')")
     @PutMapping("/update")
     public ResponseEntity<Equipe> updateEquipe(@Valid @RequestBody Equipe equipe)
     {

@@ -7,6 +7,7 @@ import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -28,6 +29,7 @@ public class MatchController {
 	MatchService matchService;
 	
 	 @CrossOrigin(origins = "*")
+	 @PreAuthorize("hasRole('ADMIN')")
 	 @PostMapping("/add")
 	 public ResponseEntity<Match> addMatch(@Valid @RequestBody Match match)
 	 {
@@ -37,6 +39,7 @@ public class MatchController {
 	  }
 	 
 	 @CrossOrigin(origins = "*")
+	 @PreAuthorize("hasAnyRole('USER', 'ADMIN')")
 	 @GetMapping("/all")
 	 public ResponseEntity<List> allMatch()
 	 {
@@ -44,6 +47,7 @@ public class MatchController {
 	 }
 	 
 	 @CrossOrigin(origins = "*")
+	 @PreAuthorize("hasRole('ADMIN')")
 	 @PostMapping("/delete/{id}")
 	 public ResponseEntity<Equipe> deleteMatch(@PathVariable("id") Long id)
 	 {
@@ -52,6 +56,7 @@ public class MatchController {
 	 }
 	 
 	 @CrossOrigin(origins = "*")
+	 @PreAuthorize("hasRole('ADMIN')")
 	 @PutMapping("/update")
 	 public ResponseEntity<Match> updateMatch(@Valid @RequestBody Match match)
 	 {

@@ -7,6 +7,7 @@ import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -29,6 +30,7 @@ public class ArbitreController {
 	
 	
 	 @CrossOrigin(origins = "*")
+	 @PreAuthorize("hasRole('ADMIN')")
 	    @PostMapping("/add")
 	    public ResponseEntity<Arbitre> addArtitre(@Valid @RequestBody Arbitre arbitre)
 	    {
@@ -38,6 +40,7 @@ public class ArbitreController {
 	    }
 	 
 	 @CrossOrigin(origins = "*")
+	 @PreAuthorize("hasAnyRole('USER', 'ADMIN')")
 	    @GetMapping("/all")
 	    public ResponseEntity<List<Arbitre>> allArbitres()
 	    {
@@ -45,6 +48,7 @@ public class ArbitreController {
 	    }
 
 	    @CrossOrigin(origins = "*")
+		@PreAuthorize("hasRole('ADMIN')")
 	    @PostMapping("/delete/{id}")
 	    public ResponseEntity<Arbitre> deleteArbitre(@PathVariable("id") Long id)
 	    {
@@ -54,6 +58,7 @@ public class ArbitreController {
 	    
 
 	    @CrossOrigin(origins = "*")
+		@PreAuthorize("hasRole('ADMIN')")
 	    @PostMapping("/update")
 	    public ResponseEntity<Arbitre> updateArbitre( @Valid @RequestBody Arbitre arbitre )
 	    {
