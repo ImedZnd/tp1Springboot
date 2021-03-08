@@ -1,8 +1,6 @@
 package isi.utm.tn.tpdevav.controller;
 
 import isi.utm.tn.tpdevav.Util.JwtUtil;
-import isi.utm.tn.tpdevav.model.AuthRequest;
-import isi.utm.tn.tpdevav.model.Spectateur;
 import isi.utm.tn.tpdevav.model.User;
 import isi.utm.tn.tpdevav.service.UserService;
 import isi.utm.tn.tpdevav.serviceImp.UserServiceImp;
@@ -62,7 +60,7 @@ public class UserController {
 	@CrossOrigin(origins = "*")
 	@PreAuthorize("hasRole('ADMIN')")
 	@GetMapping("/all")
-	public ResponseEntity<List> allUsers() {
+	public ResponseEntity<List<User>> allUsers() {
 		return new ResponseEntity<>(userService.getAll(), HttpStatus.OK);
 	}
 

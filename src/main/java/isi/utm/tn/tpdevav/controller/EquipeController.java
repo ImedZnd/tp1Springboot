@@ -40,7 +40,7 @@ public class EquipeController {
     @CrossOrigin(origins = "*")
     @PreAuthorize("hasAnyRole('USER', 'ADMIN')")
     @GetMapping("/all")
-    public ResponseEntity<List> allEquipe()
+    public ResponseEntity<List<Equipe>> allEquipe()
     {
         return new ResponseEntity<>(equipeService.getAll(), HttpStatus.OK);
     }

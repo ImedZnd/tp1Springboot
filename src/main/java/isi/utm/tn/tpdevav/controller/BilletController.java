@@ -40,7 +40,7 @@ public class BilletController {
     @CrossOrigin(origins = "*")
     @PreAuthorize("hasAnyRole('USER', 'ADMIN')")
     @GetMapping("/all")
-    public ResponseEntity<List> allBillet()
+    public ResponseEntity<List<Billet>> allBillet()
     {
         return new ResponseEntity<>(billetService.getAll(), HttpStatus.OK);
     }

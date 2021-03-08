@@ -41,7 +41,7 @@ public class TournoiController {
     @CrossOrigin(origins = "*")
     @PreAuthorize("hasAnyRole('USER', 'ADMIN')")
     @GetMapping("/all")
-    public ResponseEntity<List> allTournoi()
+    public ResponseEntity<List<Tournoi>> allTournoi()
     {
         return new ResponseEntity<>(tournoiService.getAll(), HttpStatus.OK);
     }

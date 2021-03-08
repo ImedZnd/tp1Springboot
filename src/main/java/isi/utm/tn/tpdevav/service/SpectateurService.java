@@ -2,7 +2,6 @@ package isi.utm.tn.tpdevav.service;
 
 import java.util.List;
 
-import isi.utm.tn.tpdevav.model.Match;
 import isi.utm.tn.tpdevav.model.Spectateur;
 
 public interface SpectateurService {

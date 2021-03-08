@@ -41,7 +41,7 @@ public class MatchController {
 	 @CrossOrigin(origins = "*")
 	 @PreAuthorize("hasAnyRole('USER', 'ADMIN')")
 	 @GetMapping("/all")
-	 public ResponseEntity<List> allMatch()
+	 public ResponseEntity<List<Match>> allMatch()
 	 {
 		return new ResponseEntity<>(matchService.findAllMatch(), HttpStatus.OK);
 	 }

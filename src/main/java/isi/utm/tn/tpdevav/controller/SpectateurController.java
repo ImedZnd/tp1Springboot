@@ -41,7 +41,7 @@ public class SpectateurController {
 	 @CrossOrigin(origins = "*")
 	 @PreAuthorize("hasAnyRole('USER', 'ADMIN')")
 	 @GetMapping("/all")
-	 public ResponseEntity<List> allSpectateur()
+	 public ResponseEntity<List<Spectateur>> allSpectateur()
 	 {
 		return new ResponseEntity<>(spectateurService.findAllSpectateur(), HttpStatus.OK);
 	 }

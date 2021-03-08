@@ -1,7 +1,6 @@
 package isi.utm.tn.tpdevav.model;
 
 import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotNull;
 import javax.persistence.*;
 import java.util.Date;
 import java.util.Set;
