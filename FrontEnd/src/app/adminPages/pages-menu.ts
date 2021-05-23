@@ -26,6 +26,13 @@ export const MENU_ITEMS: NbMenuItem[] = [
     link: '/adminPages/billet',
    
   },
+
+  {
+    title: 'Equipe',
+    icon: 'people-outline',
+    link: '/adminPages/equipe',
+   
+  },
   /* {
     title: 'Statistics',
     icon: 'bar-chart-outline',

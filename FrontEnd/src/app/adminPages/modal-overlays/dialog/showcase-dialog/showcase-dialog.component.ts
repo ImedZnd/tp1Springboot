@@ -4,6 +4,7 @@ import { NbDialogRef } from '@nebular/theme';
 import { HttpBilletService } from '../../../../services/http-billet.service';
 import { HttpArbitreService } from '../../../../services/http-arbitre.service';
 import { HttpMatchsService } from '../../../../services/http-matchs.service';
+import { HttpEquipeService } from '../../../../services/http-equipe.service';
 
 @Component({
   selector: 'ngx-showcase-dialog',
@@ -15,12 +16,14 @@ export class ShowcaseDialogComponent {
   @Input() title: string;
   @Input() matche: any;
   @Input() arbitre: any;
+  @Input() equipe: any;
   @Input() event: any;
   @Input() billet?: any
 
   constructor(protected ref: NbDialogRef<ShowcaseDialogComponent>, private httpMatchService: HttpMatchsService,
     private httpBilletService:HttpBilletService,
-    private httpArbitreService: HttpArbitreService
+    private httpArbitreService: HttpArbitreService,
+    private httpEquipeService: HttpEquipeService
     ) {}
 
   delete(){
@@ -33,6 +36,10 @@ export class ShowcaseDialogComponent {
 
     if(this.arbitre)
     this.httpArbitreService.deleteArbitre(this.arbitre.arbitre_id).subscribe(data => {
+    });
+
+    if(this.arbitre)
+    this.httpEquipeService.DeleteEquipe(this.equipe.equipe_id).subscribe(data => {
     });
 
     this.ref.close();
