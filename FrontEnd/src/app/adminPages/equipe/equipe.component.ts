@@ -70,7 +70,7 @@ export class EquipeComponent implements OnInit {
     const diagRef = this.dialogService.open(ShowcaseDialogComponent, {
       context:{
         title: "Delete Arbitre Confirmation",
-        arbitre: event.data,
+        equipe: event.data,
         event: event
       },
       closeOnBackdropClick: false

@@ -38,7 +38,7 @@ export class ShowcaseDialogComponent {
     this.httpArbitreService.deleteArbitre(this.arbitre.arbitre_id).subscribe(data => {
     });
 
-    if(this.arbitre)
+    if(this.equipe)
     this.httpEquipeService.DeleteEquipe(this.equipe.equipe_id).subscribe(data => {
     });
 
