@@ -18,7 +18,7 @@ public class Arbitre {
     private String name;
 
     @ManyToOne
-    @JoinColumn(name = "match_id", nullable = false)
+    @JoinColumn(name = "match_id")
     private Match match;
     
     public Arbitre() {}

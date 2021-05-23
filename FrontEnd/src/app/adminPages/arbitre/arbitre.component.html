@@ -1,1 +1,10 @@
-<p>arbitre works!</p>
+<nb-card>
+    <nb-card-header>
+      Liste des arbitres
+    </nb-card-header>
+  
+    <nb-card-body>
+      <ng2-smart-table [settings]="settings" [source]="arbitres" (deleteConfirm)="onDeleteConfirm($event)" (createConfirm)="addArbitre($event)"  (editConfirm)="editArbitre($event)">
+      </ng2-smart-table>
+    </nb-card-body>
+  </nb-card>

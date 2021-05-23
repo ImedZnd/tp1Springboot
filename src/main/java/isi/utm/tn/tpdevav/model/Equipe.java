@@ -23,7 +23,7 @@ public class Equipe {
 	private Integer points;
 
     @ManyToOne
-    @JoinColumn(name = "match_id", nullable = false)
+    @JoinColumn(name = "match_id")
     private Match match;
 
     @OneToMany(mappedBy = "equipe", fetch = FetchType.LAZY)
