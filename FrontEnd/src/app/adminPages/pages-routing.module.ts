@@ -7,6 +7,7 @@ import { ECommerceComponent } from './e-commerce/e-commerce.component';
 import { NotFoundComponent } from './miscellaneous/not-found/not-found.component';
 import { MatchsComponent } from './matchs/matchs.component';
 import { ArbitreComponent} from './arbitre/arbitre.component';
+import { JoueurComponent } from './joueur/joueur.component';
 
 const routes: Routes = [{
   path: '',
@@ -23,7 +24,11 @@ const routes: Routes = [{
     {
       path: 'arbitre',
       component: ArbitreComponent,
-    },
+     },
+     {
+        path: 'joueur',
+        component: JoueurComponent,
+   },
     {
       path: 'layout',
       loadChildren: () => import('./layout/layout.module')

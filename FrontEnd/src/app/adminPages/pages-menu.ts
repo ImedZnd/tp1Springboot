@@ -19,6 +19,11 @@ export const MENU_ITEMS: NbMenuItem[] = [
     icon: 'bar-chart-outline',
     link: '/adminPages/match',
   },
+  {
+    title: 'Joueurs',
+    icon: 'bar-chart-outline',
+    link: '/adminPages/joueur',
+  },
   // {
   //   title: 'FEATURES',
   //   group: true,
