@@ -12,12 +12,12 @@ export class HttpEquipeService {
     return this.httpClient.get<any[]>("http://localhost:8083/api/equipe/all");
   }
 
-  addEquipe(matche){
-  return this.httpClient.post<any>("http://localhost:8083/api/equipe/add",matche)
+  addEquipe(equipe){
+  return this.httpClient.post<any>("http://localhost:8083/api/equipe/add",equipe)
 }
 
-UpdateEquipe(matche){
-  return this.httpClient.put<any>("http://localhost:8083/api/equipe/update",matche)
+UpdateEquipe(equipe){
+  return this.httpClient.put<any>("http://localhost:8083/api/equipe/update",equipe)
 }
 
 DeleteEquipe(id){
