@@ -24,19 +24,15 @@ public class Spectateur {
     @JoinColumn(name = "billet_id", nullable = false)
     private Billet billet;
 	
-	@ManyToOne
-	@JoinColumn(name = "match_id", nullable = false)
-	private Match match ;
 	
 	public Spectateur() {}
 
-	public Spectateur(Long spectateur_id, String age, String cin, Billet billet, Match match) {
+	public Spectateur(Long spectateur_id, String age, String cin, Billet billet) {
 		
 		this.spectateur_id = spectateur_id;
 		this.age = age;
 		this.cin = cin;
 		this.billet = billet;
-		this.match = match;
 	}
 
 	public Long getSpectateur_id() {
@@ -71,13 +67,6 @@ public class Spectateur {
 		this.billet = billet;
 	}
 
-	public Match getMatch() {
-		return match;
-	}
-
-	public void setMatch(Match match) {
-		this.match = match;
-	}
 	
 	
 }
