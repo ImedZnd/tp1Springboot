@@ -2,16 +2,13 @@ package isi.utm.tn.tpdevav.model;
 import java.util.Date;
 import java.util.Set;
 import javax.persistence.*;
-import javax.validation.constraints.NotBlank;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-
-import org.springframework.boot.context.properties.bind.DefaultValue;
 
 import isi.utm.tn.tpdevav.extras.MatchStatus;
 
 
-@JsonIgnoreProperties({"hibernateLazyInitializer","handler","arbitres"})
+@JsonIgnoreProperties({"hibernateLazyInitializer","handler","arbitres","equipes","billets"})
 @Entity
 @Table(name="matchs")
 public class Match {
