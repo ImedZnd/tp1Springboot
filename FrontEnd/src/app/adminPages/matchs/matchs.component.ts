@@ -41,6 +41,37 @@ export class MatchsComponent implements OnInit {
         title: 'Nom',
         type: 'string',
       },
+      dateMatch: {
+        title: 'Date',
+        type: 'text',
+      },
+      status: {
+        title: 'Status',
+        editor:{
+        type:'list',
+        config: {
+          selectText: 'Select',
+          list: [{title:"LIVE", value:"LIVE"},{title:"PLAYED", value:"PLAYED"},{title:"SOON", value:"SOON"}]
+        },
+        },
+      },
+      phase: {
+        title: 'Phase',
+        editor:{
+        type:'list',
+        config: {
+          selectText: 'Select',
+          list: [
+          {title:"PHASE_DE_POOL", value:"1"},
+          {title:"SEIZIEME", value:"2"},
+          {title:"HUITIEME", value:"3"},
+          {title:"QUART_DE_FINALE", value:"4"},
+          {title:"DEMI_FINALE", value:"5"},
+          {title:"FINALE", value:"6"},
+        ]
+        },
+        },
+      },
     }
   }
 
@@ -58,6 +89,9 @@ export class MatchsComponent implements OnInit {
   handleSuccessfulResponse(response) {
     console.log(response)
     this.matches = response;
+    this.matches.forEach((m) => {
+      m.phase = m.phase.name;
+    })
     this.source.load(this.matches);
   }
 
@@ -76,9 +110,12 @@ export class MatchsComponent implements OnInit {
   addMatch(event){
     var matche = {
       "match_id": event.newData.match_id,
-      "name": event.newData.name
+      "name": event.newData.name,
+      "dateMatch": event.newData.dateMatch,
+      "status": event.newData.status,
+      "phase": event.newData.phase,
     }
-
+    matche.phase = {"phase_id": matche.phase};
     this.httpMatchService.addMatch(matche).subscribe(data => {
       console.log(data);
       event.confirm.resolve(event.newData);
@@ -90,8 +127,12 @@ export class MatchsComponent implements OnInit {
   editMatch(event){
     var matche = {
       "match_id": event.newData.match_id,
-      "name": event.newData.name
+      "name": event.newData.name,
+      "dateMatch": event.newData.dateMatch,
+      "status": event.newData.status,
+      "phase": event.newData.phase,
     }
+    matche.phase = {"phase_id": matche.phase};
     console.log(matche);
     this.httpMatchService.UpdateMatch(matche).subscribe(data => {
       console.log(data);

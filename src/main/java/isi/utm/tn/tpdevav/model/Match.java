@@ -35,11 +35,11 @@ public class Match {
     @JoinColumn(name = "phase_id", nullable = false)
     private Phase phase;
 
-    @OneToMany(mappedBy = "match", fetch = FetchType.LAZY,cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "match", fetch = FetchType.LAZY)
     private Set<Arbitre>  arbitres;
 
 
-    @OneToMany(mappedBy = "match", fetch = FetchType.LAZY,cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "match", fetch = FetchType.LAZY)
     private Set<Equipe>  equipes;
     
     @OneToMany(mappedBy = "match", fetch = FetchType.LAZY,cascade = CascadeType.ALL)

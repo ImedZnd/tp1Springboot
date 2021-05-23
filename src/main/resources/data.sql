@@ -13,8 +13,14 @@ INSERT INTO user_roles (user_id,role_id) VALUES (5,2);
 INSERT INTO tournoi (tournoi_id,name_tournoi) VALUES (1,'super leage');
 INSERT INTO tournoi (tournoi_id,name_tournoi) VALUES (2,'super leage');
 INSERT INTO tournoi (tournoi_id,name_tournoi) VALUES (3,'super leage');
+
 INSERT INTO phase (phase_id,name,tournoi_id) VALUES (1,'PHASE_DE_POOL',1);
-INSERT INTO phase (phase_id,name,tournoi_id) VALUES (2,'DEMI_FINALE',1);
+INSERT INTO phase (phase_id,name,tournoi_id) VALUES (2,'SEIZIEME',1);
+INSERT INTO phase (phase_id,name,tournoi_id) VALUES (3,'HUITIEME',1);
+INSERT INTO phase (phase_id,name,tournoi_id) VALUES (4,'QUART_DE_FINALE',1);
+INSERT INTO phase (phase_id,name,tournoi_id) VALUES (5,'DEMI_FINALE',1);
+INSERT INTO phase (phase_id,name,tournoi_id) VALUES (6,'FINALE',1);
+
 INSERT INTO matchs (match_id,name,phase_id) VALUES (1,'match name 1 ',1);
 INSERT INTO matchs (match_id,name,phase_id) VALUES (2,'name 2 match ',1);
 INSERT INTO matchs (match_id,name,phase_id) VALUES (3,'third match 3',2);

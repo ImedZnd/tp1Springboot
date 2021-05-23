@@ -5,6 +5,8 @@
   </nb-card-body>
   <nb-card-body *ngIf="billet != null">
     Are you sure to delete billet :<b> {{billet?.categorie}} </b>
+  <nb-card-body *ngIf='arbitre != null'>
+    Are you sure you want to delete arbitre : <b>{{arbitre.name}}</b>
   </nb-card-body>
   <nb-card-footer>
     <div class="d-inline p-5">
