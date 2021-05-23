@@ -21,17 +21,15 @@ public class User {
 	@NotBlank
     private String password;
 	
-    @NotBlank
     private String  email;
 
-    @NotBlank
     private String name;
 	
     private Date birthdate;
 
     private String address;
 
-	@ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+	@ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(name = "user_roles", joinColumns = {
             @JoinColumn(name = "user_id") }, inverseJoinColumns = {
             @JoinColumn(name = "role_id") })
@@ -42,7 +40,7 @@ public class User {
     
 
 	
-	public User(@NotBlank String username, @NotBlank String password, @NotBlank String email, @NotBlank String name,
+	public User(@NotBlank String username, @NotBlank String password, String email, String name,
 			Date birthdate, String address) {
 		this.username = username;
 		this.password = password;

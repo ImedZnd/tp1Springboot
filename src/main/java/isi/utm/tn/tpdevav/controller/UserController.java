@@ -1,6 +1,7 @@
 package isi.utm.tn.tpdevav.controller;
 
 import isi.utm.tn.tpdevav.Util.JwtUtil;
+import isi.utm.tn.tpdevav.model.AuthentificationResponse;
 import isi.utm.tn.tpdevav.model.User;
 import isi.utm.tn.tpdevav.service.UserService;
 import isi.utm.tn.tpdevav.serviceImp.UserServiceImp;
@@ -32,8 +33,9 @@ public class UserController {
 	@Autowired
 	AuthenticationManager authenticationManager;
 	
+	@CrossOrigin(origins = "*")
 	@PostMapping("/authenticate")
-	public String generateToken(@RequestBody User user) throws Exception {
+	public ResponseEntity<?> generateToken(@RequestBody User user) throws Exception {
 		try {
 			authenticationManager.authenticate(
 					new UsernamePasswordAuthenticationToken(user.getUsername(), user.getPassword()));
@@ -41,7 +43,8 @@ public class UserController {
 			ex.printStackTrace();
 			throw new Exception("inavalid username/password");
 		}
-		return jwtUtil.generateToken(user.getUsername());
+		final String jwt = jwtUtil.generateToken(user.getUsername()); 
+		return ResponseEntity.ok(new AuthentificationResponse(jwt));
 	}
 
 	@CrossOrigin(origins = "*")

@@ -8,6 +8,8 @@ import {
   NbRequestPasswordComponent,
   NbResetPasswordComponent,
 } from '@nebular/auth';
+import { LoginComponent } from './auth/login/login.component';
+import { NotFoundComponent } from './pages/miscellaneous/not-found/not-found.component';
 
 export const routes: Routes = [
   {
@@ -20,33 +22,21 @@ export const routes: Routes = [
     component: NbAuthComponent,
     children: [
       {
-        path: '',
-        component: NbLoginComponent,
+        path:'',
+        component:LoginComponent
       },
       {
         path: 'login',
-        component: NbLoginComponent,
+        component: LoginComponent,
       },
-      {
-        path: 'register',
-        component: NbRegisterComponent,
-      },
-      {
-        path: 'logout',
-        component: NbLogoutComponent,
-      },
-      {
-        path: 'request-password',
-        component: NbRequestPasswordComponent,
-      },
-      {
-        path: 'reset-password',
-        component: NbResetPasswordComponent,
-      },
-    ],
+    ]
   },
-  { path: '', redirectTo: 'pages', pathMatch: 'full' },
-  { path: '**', redirectTo: 'pages' },
+  {
+    path: '404',
+    component: NotFoundComponent,
+  },
+  { path: '', redirectTo: 'auth/login', pathMatch: 'full' },
+  { path: '**', redirectTo: '404' },
 ];
 
 const config: ExtraOptions = {

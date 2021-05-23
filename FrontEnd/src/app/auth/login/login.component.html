@@ -1,0 +1,118 @@
+<nb-auth-block>
+    <h2 class="title">2022 World Cup Qatar</h2>
+    <h4 class="sub-title"><i class="fa fa-user icon-user"></i>Sign In</h4>
+  
+    <form (ngSubmit)="loginEmail()" #form="ngForm" autocomplete="nope">
+      <!-- <div *ngIf="errors && errors.length > 0 && !submitted" class="alert alert-danger" role="alert">
+        <div><strong>Ooupsss!</strong></div>
+        <div *ngFor="let error of errors">{{ error }}</div>
+      </div>
+      <div *ngIf="messages && messages.length > 0 && submitted" class="alert alert-success" role="alert">
+        <div><strong>Success!</strong></div>
+        <div *ngFor="let message of messages">{{ message }}</div>
+      </div>-->
+      <div class="form-group">
+        <span class="input input--kozakura">
+          <input
+            class=" input__field input__field--kozakura"
+            type="text"
+            id="input-7"
+            name="username"
+            [(ngModel)]="user.username"
+            #username="ngModel"
+            [class.form-control-danger]="username.invalid && username.touched"
+            [required]="getConfigValue('forms.validation.password.required')"
+          />
+          <label class="input__label input__label--kozakura" for="input-7">
+            <span
+              class="input__label-content input__label-content--kozakura"
+              data-content="Username"
+              >Username</span
+            >
+          </label>
+          <svg
+            class="graphic graphic--kozakura"
+            width="300%"
+            height="100%"
+            viewBox="0 0 1200 60"
+            preserveAspectRatio="none"
+          >
+            <path
+              d="M1200,9c0,0-305.005,0-401.001,0C733,9,675.327,4.969,598,4.969C514.994,4.969,449.336,9,400.333,9C299.666,9,0,9,0,9v43c0,0,299.666,0,400.333,0c49.002,0,114.66,3.484,197.667,3.484c77.327,0,135-3.484,200.999-3.484C894.995,52,1200,52,1200,52V9z"
+            />
+          </svg>
+        </span>
+        <small
+          class="form-text error"
+          *ngIf="username.invalid && username.touched && username.errors?.required"
+        >
+          Username is required!
+        </small>
+      </div>
+  
+      <div class="form-group">
+        <span class="input input--kozakura">
+          <input
+            class="input__field input__field--kozakura"
+            type="text"
+            id="input-8"
+            name="password"
+            [(ngModel)]="user.password"
+            type="password"
+            #password="ngModel"
+            [class.form-control-danger]="password.invalid && password.touched"
+            [required]="getConfigValue('forms.validation.password.required')"
+            [minlength]="getConfigValue('forms.validation.password.minLength')"
+            [maxlength]="getConfigValue('forms.validation.password.maxLength')"
+          />
+          <label class="input__label input__label--kozakura" for="input-8">
+            <span
+              class="input__label-content input__label-content--kozakura"
+              data-content="Password"
+              >Password</span
+            >
+          </label>
+          <svg
+            class="graphic graphic--kozakura"
+            width="300%"
+            height="100%"
+            viewBox="0 0 1200 60"
+            preserveAspectRatio="none"
+          >
+            <path
+              d="M1200,9c0,0-305.005,0-401.001,0C733,9,675.327,4.969,598,4.969C514.994,4.969,449.336,9,400.333,9C299.666,9,0,9,0,9v43c0,0,299.666,0,400.333,0c49.002,0,114.66,3.484,197.667,3.484c77.327,0,135-3.484,200.999-3.484C894.995,52,1200,52,1200,52V9z"
+            />
+          </svg>
+        </span>
+        <small
+          class="form-text error"
+          *ngIf="
+            password.invalid && password.touched && password.errors?.required
+          "
+        >
+          Password is required!
+        </small>
+        <small
+          class="form-text error"
+          *ngIf="
+            password.invalid &&
+            password.touched &&
+            (password.errors?.minlength || password.errors?.maxlength)
+          "
+        >
+          Password should contains from {{ validation.password.minLength }} to
+          {{ validation.password.maxLength }} characters
+        </small>
+      </div>
+      <button
+        [disabled]="submitted || !form.valid"
+        class="btn btn-block btn-hero-success"
+        [class.btn-pulse]="submitted"
+        id="regbtn"
+      >
+        Sign In
+      </button>
+    </form>
+  </nb-auth-block>
+  
+  

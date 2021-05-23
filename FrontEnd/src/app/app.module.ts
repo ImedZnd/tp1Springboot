@@ -6,7 +6,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { CoreModule } from './@core/core.module';
 import { ThemeModule } from './@theme/theme.module';
 import { AppComponent } from './app.component';
@@ -20,9 +20,12 @@ import {
   NbToastrModule,
   NbWindowModule,
 } from '@nebular/theme';
+import { LoginComponent } from './auth/login/login.component';
+import { FormsModule } from '@angular/forms';
+import { HttpInterceptorService } from './services/http-interceptor.service';
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [AppComponent, LoginComponent],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
@@ -39,7 +42,9 @@ import {
     }),
     CoreModule.forRoot(),
     ThemeModule.forRoot(),
+    FormsModule,
   ],
+  providers: [{ provide: HTTP_INTERCEPTORS, useClass: HttpInterceptorService, multi: true }],
   bootstrap: [AppComponent],
 })
 export class AppModule {
