@@ -2,12 +2,19 @@ import { NbMenuItem } from '@nebular/theme';
 
 export const MENU_ITEMS: NbMenuItem[] = [
   {
-    title: 'News',
+    title: 'Matches',
     icon: 'globe-outline',
-    link: '/adminPages/dashboard',
+    link: '/adminPages/matchs',
     home: true,
   },
+
   {
+    title: 'Arbitre',
+    icon: 'globe-outline',
+    link: '/adminPages/arbitre',
+   
+  },
+  /* {
     title: 'Statistics',
     icon: 'bar-chart-outline',
     link: '/adminPages/match',
@@ -77,5 +84,5 @@ export const MENU_ITEMS: NbMenuItem[] = [
   {
     title: 'AWARDS',
     icon: 'star-outline',
-  },
+  }, */
 ];
