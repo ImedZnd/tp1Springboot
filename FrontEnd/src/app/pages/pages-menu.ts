@@ -10,7 +10,7 @@ export const MENU_ITEMS: NbMenuItem[] = [
   {
     title: 'Statistics',
     icon: 'bar-chart-outline',
-    link: '/pages/iot-dashboard',
+    link: '/pages/match',
   },
   // {
   //   title: 'FEATURES',

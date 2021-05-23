@@ -1,7 +1,7 @@
 package isi.utm.tn.tpdevav.config;
 
 import org.springframework.context.annotation.Configuration;
-
+import org.springframework.http.HttpMethod;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 
@@ -51,7 +51,9 @@ public class SecurityConf extends WebSecurityConfigurerAdapter {
 
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
-		http.csrf().disable().authorizeRequests().antMatchers("/api/users/authenticate").permitAll()
+		http.csrf().disable().authorizeRequests().antMatchers("/api/users/authenticate")
+				.permitAll().antMatchers(HttpMethod.OPTIONS, "/**")
+				.permitAll()
 				.anyRequest().authenticated()
 				.and()
 				.exceptionHandling().and()

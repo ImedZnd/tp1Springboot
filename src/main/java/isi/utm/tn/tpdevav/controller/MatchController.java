@@ -29,7 +29,7 @@ public class MatchController {
 	MatchService matchService;
 	
 	 @CrossOrigin(origins = "*")
-	 @PreAuthorize("hasRole('ADMIN')")
+	 //@PreAuthorize("hasRole('ADMIN')")
 	 @PostMapping("/add")
 	 public ResponseEntity<Match> addMatch(@Valid @RequestBody Match match)
 	 {
@@ -56,7 +56,7 @@ public class MatchController {
 	 }
 	 
 	 @CrossOrigin(origins = "*")
-	 @PreAuthorize("hasRole('ADMIN')")
+	 //@PreAuthorize("hasRole('ADMIN')")
 	 @PutMapping("/update")
 	 public ResponseEntity<Match> updateMatch(@Valid @RequestBody Match match)
 	 {
