@@ -39,6 +39,7 @@ export class LoginComponent implements OnInit {
   loginEmail() {
     this.errors = this.messages = [];
     this.submitted = false;
+    console.log(this.user.username+" :"+this.user.password);
     this.loginservice.authenticate(this.user.username,this.user.password).subscribe(
       data => {
         this.submitted = true;
@@ -64,20 +65,18 @@ export class LoginComponent implements OnInit {
   }
 
   redirectToDashboard() {
-    /*this.userService.getUtilisateurByLogin(this.user.username).subscribe(data => {
-      if(data.role.nom === "admin"){
+    this.userService.getUtilisateurByLogin(this.user.username).subscribe(data => {
+      console.log(data);
+      if(data.roles[0].name === "ADMIN"){
+        setTimeout(() => {
+          this.router.navigate(['/adminPages'])
+        }, this.redirectDelay);
+      }else if(data.roles[0].name === "USER"){
         setTimeout(() => {
           this.router.navigate(['/pages'])
         }, this.redirectDelay);
-      }else if(data.role.nom === "user"){
-        setTimeout(() => {
-          this.router.navigate(['/userPages'])
-        }, this.redirectDelay);
       }
-    })*/
-    setTimeout(() => {
-      this.router.navigate(['/pages'])
-    }, this.redirectDelay);
+    })
     
   }
 

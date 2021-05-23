@@ -10,35 +10,28 @@ export class HttpUserService {
 
 
   getUsers() {
-    return this.httpClient.get<any[]>("http://localhost:8083/api/utilisateur/all");
+    return this.httpClient.get<any[]>("http://localhost:8083/api/users/all");
   }
 
   addUtilisateur(utilisateur){
   return this.httpClient
-  .post<any>("http://localhost:8083/api/utilisateur/add",utilisateur)
+  .post<any>("http://localhost:8083/api/users/add",utilisateur)
 
 
 }
 
-
-
 UpdateUtilisateur(utilisateur){
   return this.httpClient
-  .put<any>("http://localhost:8083/api/utilisateur/update",utilisateur)
+  .put<any>("http://localhost:8083/api/users/update",utilisateur)
 }
 
 DeleteUtilisateur(id){
   return this.httpClient
-  .delete<any>("http://localhost:8083/api/utilisateur/delete/"+id)
-}
-
-
-getRoles(){
-  return this.httpClient.get<any>("http://localhost:8083/api/role/all");
+  .delete<any>("http://localhost:8083/api/users/delete/"+id)
 }
 
 getUtilisateurByLogin(login){
-  return this.httpClient.get<any>("http://localhost:8083/api/utilisateur/"+login);
+  return this.httpClient.get<any>("http://localhost:8083/api/users/"+login);
 }
 
 }

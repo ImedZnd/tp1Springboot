@@ -92,4 +92,12 @@ public class UserController {
         return new ResponseEntity<>(user1, HttpStatus.OK);
     }
 
+
+	@CrossOrigin(origins = "*")
+	@GetMapping("/{login}")
+	public ResponseEntity<User> getUtilisateurByLogin(@PathVariable("login") String login)
+	{
+		return new ResponseEntity<>(userService.getByUsername(login),HttpStatus.OK);
+	}
+
 }
