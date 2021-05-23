@@ -42,8 +42,8 @@ export class EquipeComponent implements OnInit {
         type: 'string',
       },
       points: {
-        title: 'Nom',
-        type: 'string',
+        title: 'Points',
+        type: 'number',
       },
     }
   }
