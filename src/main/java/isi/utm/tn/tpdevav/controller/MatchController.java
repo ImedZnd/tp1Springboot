@@ -25,44 +25,42 @@ import isi.utm.tn.tpdevav.service.MatchService;
 @RestController
 @RequestMapping("/api/match")
 public class MatchController {
-	
+
 	@Autowired
 	MatchService matchService;
-	
-	 @CrossOrigin(origins = "*")
-	 //@PreAuthorize("hasRole('ADMIN')")
-	 @PostMapping("/add")
-	 public ResponseEntity<Match> addMatch(@Valid @RequestBody Match match)
-	 {
-	    Match match1 = matchService.addMatch(match);
-	    if(match1 == null) new ResponseEntity<>(match,HttpStatus.CONFLICT);
-	    return new ResponseEntity<>(match1, HttpStatus.OK);
-	  }
-	 
-	 @CrossOrigin(origins = "*")
-	 @PreAuthorize("hasAnyRole('USER', 'ADMIN')")
-	 @GetMapping("/all")
-	 public ResponseEntity<List<Match>> allMatch()
-	 {
+
+	@CrossOrigin(origins = "*")
+	// @PreAuthorize("hasRole('ADMIN')")
+	@PostMapping("/add")
+	public ResponseEntity<Match> addMatch(@Valid @RequestBody Match match) {
+		Match match1 = matchService.addMatch(match);
+		if (match1 == null)
+			new ResponseEntity<>(match, HttpStatus.CONFLICT);
+		return new ResponseEntity<>(match1, HttpStatus.OK);
+	}
+
+	@CrossOrigin(origins = "*")
+	@PreAuthorize("hasAnyRole('USER', 'ADMIN')")
+	@GetMapping("/all")
+	public ResponseEntity<List<Match>> allMatch() {
 		return new ResponseEntity<>(matchService.findAllMatch(), HttpStatus.OK);
-	 }
-	 
-	 @CrossOrigin(origins = "*")
-	 //@PreAuthorize("hasRole('ADMIN')")
-	 @DeleteMapping("/delete/{id}")
-	 public ResponseEntity<Equipe> deleteMatch(@PathVariable("id") Long id)
-	 {
+	}
+
+	@CrossOrigin(origins = "*")
+	// @PreAuthorize("hasRole('ADMIN')")
+	@DeleteMapping("/delete/{id}")
+	public ResponseEntity<Match> deleteMatch(@PathVariable("id") Long id) {
 		matchService.deleteMatchByID(id);
-	    return new ResponseEntity<>(HttpStatus.OK);
-	 }
-	 
-	 @CrossOrigin(origins = "*")
-	 //@PreAuthorize("hasRole('ADMIN')")
-	 @PutMapping("/update")
-	 public ResponseEntity<Match> updateMatch(@Valid @RequestBody Match match)
-	 {
+		return new ResponseEntity<>(HttpStatus.OK);
+	}
+
+	@CrossOrigin(origins = "*")
+	// @PreAuthorize("hasRole('ADMIN')")
+	@PutMapping("/update")
+	public ResponseEntity<Match> updateMatch(@Valid @RequestBody Match match) {
 		Match match1 = matchService.updateMatch(match);
-	    if(match1 == null) new ResponseEntity<>(match,HttpStatus.CONFLICT);
-	    return new ResponseEntity<>(match1, HttpStatus.OK);
-	    }  
+		if (match1 == null)
+			new ResponseEntity<>(match, HttpStatus.CONFLICT);
+		return new ResponseEntity<>(match1, HttpStatus.OK);
+	}
 }

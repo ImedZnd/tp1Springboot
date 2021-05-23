@@ -10,13 +10,15 @@ INSERT INTO user_roles (user_id,role_id) VALUES (2,1);
 INSERT INTO user_roles (user_id,role_id) VALUES (3,2);
 INSERT INTO user_roles (user_id,role_id) VALUES (4,2);
 INSERT INTO user_roles (user_id,role_id) VALUES (5,2);
-INSERT INTO tournoi (tournoi_id,name_tournoi,phase) VALUES (1,'super leage','final');
-INSERT INTO tournoi (tournoi_id,name_tournoi,phase) VALUES (2,'super leage','semi-final');
-INSERT INTO tournoi (tournoi_id,name_tournoi,phase) VALUES (3,'super leage','quatre -final');
-INSERT INTO matchs (match_id,name) VALUES (1,'match name 1 ');
-INSERT INTO matchs (match_id,name) VALUES (2,'name 2 match ');
-INSERT INTO matchs (match_id,name) VALUES (3,'third match 3');
-INSERT INTO matchs (match_id,name) VALUES (4,'forth name 4 ');
+INSERT INTO tournoi (tournoi_id,name_tournoi) VALUES (1,'super leage');
+INSERT INTO tournoi (tournoi_id,name_tournoi) VALUES (2,'super leage');
+INSERT INTO tournoi (tournoi_id,name_tournoi) VALUES (3,'super leage');
+INSERT INTO phase (phase_id,name,tournoi_id) VALUES (1,'PHASE_DE_POOL',1);
+INSERT INTO phase (phase_id,name,tournoi_id) VALUES (2,'DEMI_FINALE',1);
+INSERT INTO matchs (match_id,name,phase_id) VALUES (1,'match name 1 ',1);
+INSERT INTO matchs (match_id,name,phase_id) VALUES (2,'name 2 match ',1);
+INSERT INTO matchs (match_id,name,phase_id) VALUES (3,'third match 3',2);
+INSERT INTO matchs (match_id,name,phase_id) VALUES (4,'forth name 4 ',2);
 INSERT INTO billet (billet_id,categorie,num_place,prix,match_id) VALUES (1,'VIP','512',10,1);
 INSERT INTO billet (billet_id,categorie,num_place,prix,match_id) VALUES (2,'VIP','551',10,1);
 INSERT INTO billet (billet_id,categorie,num_place,prix,match_id) VALUES (3,'normal','854',10,1);
@@ -49,17 +51,17 @@ INSERT INTO spectateur (spectateur_id,age,cin,billet_id) VALUES (13,'52','796586
 INSERT INTO spectateur (spectateur_id,age,cin,billet_id) VALUES (14,'74','27554522',14);
 INSERT INTO spectateur (spectateur_id,age,cin,billet_id) VALUES (15,'22','24772572',15);
 
-INSERT INTO equipe (equipe_id,name,match_id,tournoi_id) VALUES (1,'Tunis',1,1);
-INSERT INTO equipe (equipe_id,name,match_id,tournoi_id) VALUES (2,'USA',1,1);
+INSERT INTO equipe (equipe_id,name,match_id) VALUES (1,'Tunis',1);
+INSERT INTO equipe (equipe_id,name,match_id) VALUES (2,'USA',1);
 
-INSERT INTO equipe (equipe_id,name,match_id,tournoi_id) VALUES (3,'Maroco',2,2);
-INSERT INTO equipe (equipe_id,name,match_id,tournoi_id) VALUES (4,'Ghana',2,2);
+INSERT INTO equipe (equipe_id,name,match_id) VALUES (3,'Maroco',2);
+INSERT INTO equipe (equipe_id,name,match_id) VALUES (4,'Ghana',2);
 
-INSERT INTO equipe (equipe_id,name,match_id,tournoi_id) VALUES (5,'Japon',3,3);
-INSERT INTO equipe (equipe_id,name,match_id,tournoi_id) VALUES (6,'Qatar',3,3);
+INSERT INTO equipe (equipe_id,name,match_id) VALUES (5,'Japon',3);
+INSERT INTO equipe (equipe_id,name,match_id) VALUES (6,'Qatar',3);
 
-INSERT INTO equipe (equipe_id,name,match_id,tournoi_id) VALUES (7,'Russia',4,4);
-INSERT INTO equipe (equipe_id,name,match_id,tournoi_id) VALUES (8,'UK',4,4);
+INSERT INTO equipe (equipe_id,name,match_id) VALUES (7,'Russia',4);
+INSERT INTO equipe (equipe_id,name,match_id) VALUES (8,'UK',4);
 
 INSERT INTO joueur (joueur_id,	name,equipe_id) VALUES (1,'Msakni',1);
 INSERT INTO joueur (joueur_id,	name,equipe_id) VALUES (2,'Khasri',1);

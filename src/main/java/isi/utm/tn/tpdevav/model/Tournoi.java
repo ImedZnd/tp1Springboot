@@ -3,8 +3,6 @@ package isi.utm.tn.tpdevav.model;
 import java.util.Set;
 
 import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -12,8 +10,9 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
-import isi.utm.tn.tpdevav.extras.Phase;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
+@JsonIgnoreProperties({"hibernateLazyInitializer","handler","phases"})
 @Entity
 @Table(name = "tournoi")
 public class Tournoi {
@@ -24,29 +23,20 @@ public class Tournoi {
 	
 	private String nameTournoi;
 		
-	@Enumerated(EnumType.STRING)
-	private Phase phase;
 	
 	@OneToMany(mappedBy = "tournoi", fetch = FetchType.LAZY)
-	private Set<Equipe> equipes;
+	private Set<Phase> phases;
 	
 	public Tournoi() {}
-	
 
-	public Tournoi(Long tournoi_id, String nameTournoi, Phase phase, Set<Equipe> equipes) {
-		
+
+	public Tournoi(Long tournoi_id, String nameTournoi, Set<Phase> phases) {
 		this.tournoi_id = tournoi_id;
 		this.nameTournoi = nameTournoi;
-		this.phase = phase;
-		this.equipes = equipes;
+		this.phases = phases;
 	}
 
 
-	
-
-	public Phase getPhase() {
-		return phase;
-	}
 
 	public Long getTournoi_id() {
 		return tournoi_id;
@@ -64,14 +54,13 @@ public class Tournoi {
 		this.nameTournoi = nameTournoi;
 	}
 
-	public Set<Equipe> getEquipes() {
-		return equipes;
+	public Set<Phase> getPhases() {
+		return phases;
 	}
 
-	public void setEquipes(Set<Equipe> equipes) {
-		this.equipes = equipes;
+	public void setPhases(Set<Phase> phases) {
+		this.phases = phases;
 	}
-	
 	
 
 	

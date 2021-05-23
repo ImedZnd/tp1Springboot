@@ -4,6 +4,8 @@ import javax.persistence.*;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
+import org.springframework.boot.context.properties.bind.DefaultValue;
+
 import java.util.Set;
 
 @JsonIgnoreProperties({"hibernateLazyInitializer","handler","joueurs"})
@@ -17,76 +19,77 @@ public class Equipe {
 
     private String name;
 
+	@Column(columnDefinition = "integer default 0")
+	private Integer points;
+
     @ManyToOne
     @JoinColumn(name = "match_id", nullable = false)
     private Match match;
 
     @OneToMany(mappedBy = "equipe", fetch = FetchType.LAZY)
     private Set<Joueur> joueurs;
-    
-    @ManyToOne
-    @JoinColumn(name = "tournoi_id", nullable = false)
-    private Tournoi tournoi;
-    
-    public Equipe() {}    
 
-	
+    
+    public Equipe() {}
 
-	public Equipe(Long equipe_id, String name, Match match, Set<Joueur> joueurs, Tournoi tournoi) {
-		super();
+
+	public Equipe(Long equipe_id, String name, Integer points, Match match, Set<Joueur> joueurs) {
 		this.equipe_id = equipe_id;
 		this.name = name;
+		this.points = points;
 		this.match = match;
 		this.joueurs = joueurs;
-		this.tournoi = tournoi;
 	}
-
-
-
-	public Tournoi getTournoi() {
-		return tournoi;
-	}
-
-
-
-	public void setTournoi(Tournoi tournoi) {
-		this.tournoi = tournoi;
-	}
-
 
 
 	public Long getEquipe_id() {
 		return equipe_id;
 	}
 
+
 	public void setEquipe_id(Long equipe_id) {
 		this.equipe_id = equipe_id;
 	}
+
 
 	public String getName() {
 		return name;
 	}
 
+
 	public void setName(String name) {
 		this.name = name;
 	}
+
+
+	public Integer getPoints() {
+		return points;
+	}
+
+
+	public void setPoints(Integer points) {
+		this.points = points;
+	}
+
 
 	public Match getMatch() {
 		return match;
 	}
 
+
 	public void setMatch(Match match) {
 		this.match = match;
 	}
+
 
 	public Set<Joueur> getJoueurs() {
 		return joueurs;
 	}
 
+
 	public void setJoueurs(Set<Joueur> joueurs) {
 		this.joueurs = joueurs;
-	}
-    
-    
+	}    
 
+	
 }

@@ -1,6 +1,6 @@
 package isi.utm.tn.tpdevav.extras;
 
-public enum Phase {
+public enum PhaseName {
 	PHASE_DE_POOL,
 	SEIZIEME,
 	hUITIEME,
