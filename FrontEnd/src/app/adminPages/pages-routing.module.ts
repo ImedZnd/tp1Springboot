@@ -22,7 +22,7 @@ const routes: Routes = [{
     },
     {
       path: 'arbitre',
-      component: MatchsComponent,
+      component: ArbitreComponent,
     },
     {
       path: 'layout',

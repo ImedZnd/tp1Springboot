@@ -4,7 +4,7 @@ export const MENU_ITEMS: NbMenuItem[] = [
   {
     title: 'Matches',
     icon: 'globe-outline',
-    link: '/adminPages/matchs',
+    link: '/adminPages/match',
     home: true,
   },
 
