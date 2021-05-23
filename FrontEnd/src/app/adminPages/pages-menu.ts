@@ -14,6 +14,12 @@ export const MENU_ITEMS: NbMenuItem[] = [
     link: '/adminPages/arbitre',
    
   },
+  {
+    title: 'Joueurs',
+    icon: 'globe-outline',
+    link: '/adminPages/joueur',
+   
+  },
   /* {
     title: 'Statistics',
     icon: 'bar-chart-outline',
