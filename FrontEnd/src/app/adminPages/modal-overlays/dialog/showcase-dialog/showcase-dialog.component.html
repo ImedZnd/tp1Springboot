@@ -3,6 +3,9 @@
   <nb-card-body *ngIf='matche != null'>
     Are you sure to delete Match : <b>{{matche.name}}</b>
   </nb-card-body>
+  <nb-card-body *ngIf='arbitre != null'>
+    Are you sure you want to delete arbitre : <b>{{arbitre.name}}</b>
+  </nb-card-body>
   <nb-card-footer>
     <div class="d-inline p-5">
     <button  nbButton hero status="danger" (click)="delete()">Confirm</button>

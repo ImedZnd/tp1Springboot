@@ -43,7 +43,7 @@ public class ArbitreController {
 
 	    @CrossOrigin(origins = "*")
 		@PreAuthorize("hasRole('ADMIN')")
-	    @PostMapping("/delete/{id}")
+	    @DeleteMapping("/delete/{id}")
 	    public ResponseEntity<Arbitre> deleteArbitre(@PathVariable("id") Long id)
 	    {
 	    	arbitreService.deleteArbitreByID(id);;

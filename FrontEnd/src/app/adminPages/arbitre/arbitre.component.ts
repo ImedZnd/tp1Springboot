@@ -66,7 +66,7 @@ export class ArbitreComponent implements OnInit {
     const diagRef = this.dialogService.open(ShowcaseDialogComponent, {
       context:{
         title: "Delete Arbitre Confirmation",
-       
+        arbitre: event.data,
         event: event
       },
       closeOnBackdropClick: false
