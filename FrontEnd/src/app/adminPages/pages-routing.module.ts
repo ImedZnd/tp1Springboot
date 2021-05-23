@@ -8,6 +8,7 @@ import { NotFoundComponent } from './miscellaneous/not-found/not-found.component
 import { MatchsComponent } from './matchs/matchs.component';
 import { ArbitreComponent} from './arbitre/arbitre.component';
 import { JoueurComponent } from './joueur/joueur.component';
+import { BilletComponent } from './billet/billet.component';
 
 const routes: Routes = [{
   path: '',
@@ -29,6 +30,10 @@ const routes: Routes = [{
         path: 'joueur',
         component: JoueurComponent,
    },
+   {
+      path: 'billet',
+      component: BilletComponent,
+ },
     {
       path: 'layout',
       loadChildren: () => import('./layout/layout.module')

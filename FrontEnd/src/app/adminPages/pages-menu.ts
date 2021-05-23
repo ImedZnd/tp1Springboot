@@ -20,6 +20,12 @@ export const MENU_ITEMS: NbMenuItem[] = [
     link: '/adminPages/joueur',
    
   },
+  {
+    title: 'Billet',
+    icon: 'bookmark-outline',
+    link: '/adminPages/billet',
+   
+  },
   /* {
     title: 'Statistics',
     icon: 'bar-chart-outline',

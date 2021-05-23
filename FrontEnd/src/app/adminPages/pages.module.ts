@@ -11,6 +11,7 @@ import { MatchsComponent } from './matchs/matchs.component';
 import { Ng2SmartTableModule } from 'ng2-smart-table';
 import { ArbitreComponent } from './arbitre/arbitre.component';
 import { JoueurComponent } from './joueur/joueur.component';
+import { BilletComponent } from './billet/billet.component';
 
 @NgModule({
   imports: [
@@ -29,6 +30,7 @@ import { JoueurComponent } from './joueur/joueur.component';
     MatchsComponent,
     ArbitreComponent,
     JoueurComponent,
+    BilletComponent,
   ],
 })
 export class PagesModule {
