@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { NbDialogService } from '@nebular/theme';
 import { LocalDataSource } from 'ng2-smart-table';
 import { HttpMatchsService } from '../../services/http-matchs.service';
+import { ShowcaseDialogComponent } from '../modal-overlays/dialog/showcase-dialog/showcase-dialog.component';
 
 @Component({
   selector: 'ngx-matchs',
@@ -61,7 +62,15 @@ export class MatchsComponent implements OnInit {
   }
 
   onDeleteConfirm(event){
-
+    console.log(event.data);
+    const diagRef = this.dialogService.open(ShowcaseDialogComponent, {
+      context:{
+        title: "Delete Match Confirmation",
+        matche: event.data,
+        event: event
+      },
+      closeOnBackdropClick: false
+    }); 
   }
 
   addMatch(event){
