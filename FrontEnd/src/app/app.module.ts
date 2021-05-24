@@ -23,9 +23,11 @@ import {
 import { LoginComponent } from './auth/login/login.component';
 import { FormsModule } from '@angular/forms';
 import { HttpInterceptorService } from './services/http-interceptor.service';
+import { OwlDateTimeModule, OwlNativeDateTimeModule } from 'ng-pick-datetime';
+import { SmartTableDatepickerComponent, SmartTableDatepickerRenderComponent } from './adminPages/smart-table-datepicker/smart-table-datepicker.component';
 
 @NgModule({
-  declarations: [AppComponent, LoginComponent],
+  declarations: [AppComponent, LoginComponent, SmartTableDatepickerComponent, SmartTableDatepickerRenderComponent],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
@@ -43,6 +45,12 @@ import { HttpInterceptorService } from './services/http-interceptor.service';
     CoreModule.forRoot(),
     ThemeModule.forRoot(),
     FormsModule,
+    OwlDateTimeModule,
+    OwlNativeDateTimeModule,
+  ],
+  entryComponents: [
+    SmartTableDatepickerComponent,
+    SmartTableDatepickerRenderComponent
   ],
   providers: [{ provide: HTTP_INTERCEPTORS, useClass: HttpInterceptorService, multi: true }],
   bootstrap: [AppComponent],

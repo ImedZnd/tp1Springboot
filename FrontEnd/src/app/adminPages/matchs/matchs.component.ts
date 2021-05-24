@@ -3,6 +3,7 @@ import { NbDialogService } from '@nebular/theme';
 import { LocalDataSource } from 'ng2-smart-table';
 import { HttpMatchsService } from '../../services/http-matchs.service';
 import { ShowcaseDialogComponent } from '../modal-overlays/dialog/showcase-dialog/showcase-dialog.component';
+import { SmartTableDatepickerComponent, SmartTableDatepickerRenderComponent } from '../smart-table-datepicker/smart-table-datepicker.component';
 
 @Component({
   selector: 'ngx-matchs',
@@ -43,7 +44,14 @@ export class MatchsComponent implements OnInit {
       },
       dateMatch: {
         title: 'Date',
-        type: 'text',
+        type: 'custom',
+        renderComponent: SmartTableDatepickerRenderComponent,
+        filter: false,
+        sortDirection: 'desc',
+        editor: {
+          type: 'custom',
+          component: SmartTableDatepickerComponent,
+        }
       },
       status: {
         title: 'Status',
