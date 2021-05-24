@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NbDialogService } from '@nebular/theme';
 import { LocalDataSource } from 'ng2-smart-table';
+import { HttpEquipeService } from '../../services/http-equipe.service';
 import { HttpMatchsService } from '../../services/http-matchs.service';
 import { ShowcaseDialogComponent } from '../modal-overlays/dialog/showcase-dialog/showcase-dialog.component';
 import { SmartTableDatepickerComponent, SmartTableDatepickerRenderComponent } from '../smart-table-datepicker/smart-table-datepicker.component';
@@ -37,10 +38,6 @@ export class MatchsComponent implements OnInit {
         type: 'number',
         addable: false,
         editable:false
-      },
-      name: {
-        title: 'Nom',
-        type: 'string',
       },
       dateMatch: {
         title: 'Date',
@@ -80,27 +77,130 @@ export class MatchsComponent implements OnInit {
         },
         },
       },
+      equipe1: {
+        title: 'Equipe 1',
+        editor:{
+        type:'list',
+        config: {
+          selectText: 'Select',
+          list: []
+        },
+        },
+        valuePrepareFunction: (equipe1) => {
+          return equipe1;
+          
+        },
+        filterFunction(equipe1?: any, search?: string): boolean {
+          let match1 = true;
+          Object.keys(match1).map(u => equipe1.name).filter(it => {
+            match1 = it.toLowerCase().includes(search);
+          });
+
+          if (match1 || search === '') {
+            return true;
+          } else {
+            return false
+          }
+        },
+        filter: true,
+        compareFunction: (direction: any, a: any, b: any) => {
+          let first = typeof a.nom === 'string' ? a.nom.toLowerCase(): a.nom;
+          let second = typeof b.nom === 'string' ? b.nom.toLowerCase(): b.nom;
+
+          if (first < second) {
+            return -1 * direction;
+          }
+          if (first > second) {
+            return direction;
+          }
+          return 0;
+        }
+      },
+      equipe2: {
+        title: 'Equipe 2',
+        editor:{
+        type:'list',
+        config: {
+          selectText: 'Select',
+          list: []
+        },
+        },
+        valuePrepareFunction: (equipe2) => {
+          return equipe2;
+          
+        },
+        filterFunction(equipe2?: any, search?: string): boolean {
+          let match1 = true;
+          Object.keys(match1).map(u => equipe2.name).filter(it => {
+            match1 = it.toLowerCase().includes(search);
+          });
+
+          if (match1 || search === '') {
+            return true;
+          } else {
+            return false
+          }
+        },
+        filter: true,
+        compareFunction: (direction: any, a: any, b: any) => {
+          let first = typeof a.nom === 'string' ? a.nom.toLowerCase(): a.nom;
+          let second = typeof b.nom === 'string' ? b.nom.toLowerCase(): b.nom;
+
+          if (first < second) {
+            return -1 * direction;
+          }
+          if (first > second) {
+            return direction;
+          }
+          return 0;
+        }
+      },
     }
   }
 
   matches: any[];
   source: LocalDataSource;
+  Equipes:any[];
 
-  constructor(private httpMatchService: HttpMatchsService, private dialogService: NbDialogService) {
+  constructor(private httpMatchService: HttpMatchsService, private dialogService: NbDialogService,
+  private httpEquipeService:HttpEquipeService) {
     this.source = new LocalDataSource(this.matches);
    }
 
   ngOnInit(): void {
-    this.httpMatchService.getMatchs().subscribe(data => this.handleSuccessfulResponse(data))
+    this.httpMatchService.getMatchs().subscribe(data => this.handleSuccessfulResponse(data));
+    
+    this.httpEquipeService.getEquipes().subscribe(data => this.Equipes=data);
+    console.log(this.Equipes);
+
   }
 
   handleSuccessfulResponse(response) {
     console.log(response)
+
     this.matches = response;
     this.matches.forEach((m) => {
+      if(m.equipes.length != 0){
+      m.equipe1 = m.equipes[0].name;
+      m.equipe2 =m.equipes[1].name;
+      
+      console.log(m.equipes[0]);
+    }
       m.phase = m.phase.name;
     })
+    console.log(this.matches);
     this.source.load(this.matches);
+setTimeout(() => {
+  this.settings.columns.equipe1.editor.config.list = this.Equipes.map(d => {
+    return {'value':d.equipe_id, 'title': d.name}
+  });
+  this.settings = Object.assign({}, this.settings);
+  this.settings.columns.equipe2.editor.config.list = this.Equipes.map(d => {
+    return {'value':d.equipe_id, 'title': d.name}
+  });
+  this.settings = Object.assign({}, this.settings);
+}, 500);
+    
   }
 
   onDeleteConfirm(event){
@@ -122,8 +222,11 @@ export class MatchsComponent implements OnInit {
       "dateMatch": event.newData.dateMatch,
       "status": event.newData.status,
       "phase": event.newData.phase,
+      "equipes":[]
     }
     matche.phase = {"phase_id": matche.phase};
+    matche.equipes[0] = {"equipe_id":event.newData.equipe1}
+    matche.equipes[1] = {"equipe_id":event.newData.equipe2}
     console.log(matche)
     this.httpMatchService.addMatch(matche).subscribe(data => {
       console.log(data);
@@ -140,8 +243,11 @@ export class MatchsComponent implements OnInit {
       "dateMatch": event.newData.dateMatch,
       "status": event.newData.status,
       "phase": event.newData.phase,
+      "equipes":[]
     }
     matche.phase = {"phase_id": matche.phase};
+    matche.equipes[0] = {"equipe_id":event.newData.equipe1}
+    matche.equipes[1] = {"equipe_id":event.newData.equipe2}
     console.log(matche);
     this.httpMatchService.UpdateMatch(matche).subscribe(data => {
       console.log(data);
