@@ -124,6 +124,7 @@ export class MatchsComponent implements OnInit {
       "phase": event.newData.phase,
     }
     matche.phase = {"phase_id": matche.phase};
+    console.log(matche)
     this.httpMatchService.addMatch(matche).subscribe(data => {
       console.log(data);
       event.confirm.resolve(event.newData);

@@ -77,7 +77,7 @@ public class Match {
 	}
 
 	public String getName() {
-		if(this.getEquipes() != null){
+		if(this.getEquipes() != null && this.getEquipes().size() == 2){
 		List<Equipe> list = new ArrayList<Equipe>(this.getEquipes());
 		return list.get(0).getName() +" VS "+list.get(1).getName() +" : "+getPhase().getName();
 	}else{
