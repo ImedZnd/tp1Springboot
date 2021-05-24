@@ -57,17 +57,24 @@ INSERT INTO spectateur (spectateur_id,age,cin,billet_id) VALUES (13,'52','796586
 INSERT INTO spectateur (spectateur_id,age,cin,billet_id) VALUES (14,'74','27554522',14);
 INSERT INTO spectateur (spectateur_id,age,cin,billet_id) VALUES (15,'22','24772572',15);
 
-INSERT INTO equipe (equipe_id,name,match_id) VALUES (1,'Tunis',1);
-INSERT INTO equipe (equipe_id,name,match_id) VALUES (2,'USA',1);
+INSERT INTO equipe (equipe_id,name) VALUES (1,'Tunis');
+INSERT INTO equipe (equipe_id,name) VALUES (2,'USA');
 
-INSERT INTO equipe (equipe_id,name,match_id) VALUES (3,'Maroco',2);
-INSERT INTO equipe (equipe_id,name,match_id) VALUES (4,'Ghana',2);
+INSERT INTO equipe (equipe_id,name) VALUES (3,'Maroco');
+INSERT INTO equipe (equipe_id,name) VALUES (4,'Ghana');
 
-INSERT INTO equipe (equipe_id,name,match_id) VALUES (5,'Japon',3);
-INSERT INTO equipe (equipe_id,name,match_id) VALUES (6,'Qatar',3);
+INSERT INTO equipe (equipe_id,name) VALUES (5,'Japon');
+INSERT INTO equipe (equipe_id,name) VALUES (6,'Qatar');
 
-INSERT INTO equipe (equipe_id,name,match_id) VALUES (7,'Russia',4);
-INSERT INTO equipe (equipe_id,name,match_id) VALUES (8,'UK',4);
+INSERT INTO equipe (equipe_id,name) VALUES (7,'Russia');
+INSERT INTO equipe (equipe_id,name) VALUES (8,'UK');
+
+INSERT INTO match_equipes (match_id,equipe_id) VALUES (1,1);
+INSERT INTO match_equipes (match_id,equipe_id) VALUES (1,2);
+INSERT INTO match_equipes (match_id,equipe_id) VALUES (2,3);
+INSERT INTO match_equipes (match_id,equipe_id) VALUES (2,4);
+INSERT INTO match_equipes (match_id,equipe_id) VALUES (3,5);
+INSERT INTO match_equipes (match_id,equipe_id) VALUES (3,6);
 
 INSERT INTO joueur (joueur_id,	name,equipe_id) VALUES (1,'Msakni',1);
 INSERT INTO joueur (joueur_id,	name,equipe_id) VALUES (2,'Khasri',1);

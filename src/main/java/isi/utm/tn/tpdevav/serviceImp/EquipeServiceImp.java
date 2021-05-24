@@ -1,7 +1,6 @@
 package isi.utm.tn.tpdevav.serviceImp;
 
 import java.util.List;
-import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -33,8 +32,8 @@ public class EquipeServiceImp implements EquipeService {
     }
 
     @Override
-    public Optional<Equipe> getById(Long id) {
-            return equipeRepository.findById(id);
+    public Equipe getById(Long id) {
+            return equipeRepository.findById(id).get();
     }
 
     @Override

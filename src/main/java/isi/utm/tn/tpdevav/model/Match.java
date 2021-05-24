@@ -1,5 +1,6 @@
 package isi.utm.tn.tpdevav.model;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Date;
 import java.util.List;
 import java.util.Set;
@@ -10,7 +11,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import isi.utm.tn.tpdevav.extras.MatchStatus;
 
 
-@JsonIgnoreProperties({"hibernateLazyInitializer","handler","arbitres","equipes","billets"})
+@JsonIgnoreProperties({"hibernateLazyInitializer","handler","arbitres","billets"})
 @Entity
 @Table(name="matchs")
 public class Match {
@@ -41,8 +42,8 @@ public class Match {
     private Set<Arbitre>  arbitres;
 
 
-    @OneToMany(mappedBy = "match", fetch = FetchType.LAZY)
-    private Set<Equipe>  equipes;
+    @ManyToMany(mappedBy = "matches")
+    private Collection<Equipe>  equipes = new ArrayList<>();
     
     @OneToMany(mappedBy = "match", fetch = FetchType.LAZY,cascade = CascadeType.ALL)
     private Set<Billet> billets; 
@@ -53,7 +54,7 @@ public class Match {
 
 
 	public Match(Long match_id, String name, Date dateMatch, Long winner_id, String scoreEquipe1, String scoreEquipe2,
-			MatchStatus status, Phase phase, Set<Arbitre> arbitres, Set<Equipe> equipes, Set<Billet> billets) {
+			MatchStatus status, Phase phase, Set<Arbitre> arbitres, Collection<Equipe> equipes, Set<Billet> billets) {
 		this.match_id = match_id;
 		this.name = name;
 		this.dateMatch = dateMatch;
@@ -136,14 +137,14 @@ public class Match {
 
 
 
-	public Set<Equipe> getEquipes() {
+	public Collection<Equipe> getEquipes() {
 		return equipes;
 	}
 
 
 
 
-	public void setEquipes(Set<Equipe> equipes) {
+	public void setEquipes(Collection<Equipe> equipes) {
 		this.equipes = equipes;
 	}
 

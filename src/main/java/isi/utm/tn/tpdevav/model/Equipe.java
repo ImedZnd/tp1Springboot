@@ -4,11 +4,11 @@ import javax.persistence.*;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
-import org.springframework.boot.context.properties.bind.DefaultValue;
-
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Set;
 
-@JsonIgnoreProperties({"hibernateLazyInitializer","handler","joueurs"})
+@JsonIgnoreProperties({"hibernateLazyInitializer","handler","matches","joueurs"})
 @Entity
 @Table(name = "equipe")
 public class Equipe {
@@ -22,9 +22,9 @@ public class Equipe {
 	@Column(columnDefinition = "integer default 0")
 	private Integer points;
 
-    @ManyToOne
-    @JoinColumn(name = "match_id")
-    private Match match;
+    @ManyToMany
+	@JoinTable(name="match_equipes", joinColumns = @JoinColumn(name="equipe_id"), inverseJoinColumns = @JoinColumn(name="match_id"))
+    private Collection<Match> matches = new ArrayList<>();
 
     @OneToMany(mappedBy = "equipe", fetch = FetchType.LAZY)
     private Set<Joueur> joueurs;
@@ -33,11 +33,11 @@ public class Equipe {
     public Equipe() {}
 
 
-	public Equipe(Long equipe_id, String name, Integer points, Match match, Set<Joueur> joueurs) {
+	public Equipe(Long equipe_id, String name, Integer points, Collection<Match> matches, Set<Joueur> joueurs) {
 		this.equipe_id = equipe_id;
 		this.name = name;
 		this.points = points;
-		this.match = match;
+		this.matches = matches;
 		this.joueurs = joueurs;
 	}
 
@@ -72,13 +72,13 @@ public class Equipe {
 	}
 
 
-	public Match getMatch() {
-		return match;
+	public Collection<Match> getMatches() {
+		return matches;
 	}
 
 
-	public void setMatch(Match match) {
-		this.match = match;
+	public void setMatches(Collection<Match> matches) {
+		this.matches = matches;
 	}
 
 
@@ -89,7 +89,7 @@ public class Equipe {
 
 	public void setJoueurs(Set<Joueur> joueurs) {
 		this.joueurs = joueurs;
-	}    
+	}
 
 	
 }
