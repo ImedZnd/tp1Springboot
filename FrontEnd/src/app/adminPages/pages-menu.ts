@@ -19,6 +19,10 @@ export const MENU_ITEMS: NbMenuItem[] = [
     icon: 'globe-outline',
     link: '/adminPages/joueur',
    
+  },{
+  title: 'Matches Direct',
+  icon: 'globe-outline',
+  link: '/adminPages/directmatch',
   },
   {
     title: 'Billet',

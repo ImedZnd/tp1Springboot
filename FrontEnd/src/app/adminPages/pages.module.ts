@@ -13,6 +13,9 @@ import { ArbitreComponent } from './arbitre/arbitre.component';
 import { JoueurComponent } from './joueur/joueur.component';
 import { BilletComponent } from './billet/billet.component';
 import { EquipeComponent } from './equipe/equipe.component';
+import { MatchDirectComponent } from './match-direct/match-direct.component';
+import { NbListModule } from '@nebular/theme';
+import { NbSelectModule } from '@nebular/theme';
 
 @NgModule({
   imports: [
@@ -25,6 +28,8 @@ import { EquipeComponent } from './equipe/equipe.component';
     Ng2SmartTableModule,
     NbCardModule,
     NbDialogModule.forRoot(),
+    NbListModule,
+    NbSelectModule
   ],
   declarations: [
     PagesComponent,
@@ -33,6 +38,7 @@ import { EquipeComponent } from './equipe/equipe.component';
     JoueurComponent,
     BilletComponent,
     EquipeComponent,
+    MatchDirectComponent,
   ],
 })
 export class PagesModule {

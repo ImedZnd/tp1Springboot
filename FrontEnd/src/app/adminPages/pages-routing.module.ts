@@ -10,6 +10,7 @@ import { ArbitreComponent} from './arbitre/arbitre.component';
 import { JoueurComponent } from './joueur/joueur.component';
 import { BilletComponent } from './billet/billet.component';
 import { EquipeComponent } from './equipe/equipe.component';
+import { MatchDirectComponent } from './match-direct/match-direct.component';
 
 const routes: Routes = [{
   path: '',
@@ -38,6 +39,10 @@ const routes: Routes = [{
  {
   path: 'equipe',
   component: EquipeComponent,
+},
+{
+  path: 'directmatch',
+  component: MatchDirectComponent,
 },
     {
       path: 'layout',
