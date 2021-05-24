@@ -91,7 +91,7 @@ const routes: Routes = [{
     },
     {
       path: '',
-      redirectTo: 'dashboard',
+      redirectTo: 'match',
       pathMatch: 'full',
     },
     {
