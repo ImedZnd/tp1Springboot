@@ -9,6 +9,7 @@ import { PagesRoutingModule } from './pages-routing.module';
 import { MiscellaneousModule } from './miscellaneous/miscellaneous.module';
 import { MatchsComponent } from './matchs/matchs.component';
 import { Ng2SmartTableModule } from 'ng2-smart-table';
+import { EquipesComponent } from './equipes/equipes.component';
 
 @NgModule({
   imports: [
@@ -25,6 +26,7 @@ import { Ng2SmartTableModule } from 'ng2-smart-table';
   declarations: [
     PagesComponent,
     MatchsComponent,
+    EquipesComponent,
   ],
 })
 export class PagesModule {

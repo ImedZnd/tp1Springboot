@@ -34,6 +34,7 @@ export const MENU_ITEMS: NbMenuItem[] = [
   {
     title: 'Teams',
     icon: 'people-outline',
+    link: '/pages/equipes'
   },
   {
     title: 'Groups',

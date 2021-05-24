@@ -6,6 +6,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { ECommerceComponent } from './e-commerce/e-commerce.component';
 import { NotFoundComponent } from './miscellaneous/not-found/not-found.component';
 import { MatchsComponent } from './matchs/matchs.component';
+import { EquipesComponent } from './equipes/equipes.component';
 
 const routes: Routes = [{
   path: '',
@@ -18,6 +19,10 @@ const routes: Routes = [{
     {
       path: 'match',
       component: MatchsComponent,
+    },
+    {
+      path: 'equipes',
+      component: EquipesComponent,
     },
     {
       path: 'layout',
