@@ -64,13 +64,17 @@ public class Billet {
 		this.num_place = num_place;
 	}
 
-	public String getCatégorie() {
+	
+
+	public String getCategorie() {
 		return categorie;
 	}
 
-	public void setCatégorie(String catégorie) {
-		this.categorie = catégorie;
+
+	public void setCategorie(String categorie) {
+		this.categorie = categorie;
 	}
+
 
 	public String getPrix() {
 		return prix;

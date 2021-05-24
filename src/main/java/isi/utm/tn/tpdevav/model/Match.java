@@ -1,5 +1,7 @@
 package isi.utm.tn.tpdevav.model;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import java.util.Set;
 import javax.persistence.*;
 
@@ -75,8 +77,14 @@ public class Match {
 	}
 
 	public String getName() {
-		return name;
+		if(this.getEquipes() != null){
+		List<Equipe> list = new ArrayList<Equipe>(this.getEquipes());
+		return list.get(0).getName() +" VS "+list.get(1).getName() +" : "+getPhase().getName();
+	}else{
+		return this.name ;}
 	}
+	
+	
 
 	public void setName(String name) {
 		this.name = name;
@@ -122,13 +130,25 @@ public class Match {
 		this.arbitres = arbitres;
 	}
 
+	
+
+	
+
+
+
 	public Set<Equipe> getEquipes() {
 		return equipes;
 	}
 
+
+
+
 	public void setEquipes(Set<Equipe> equipes) {
 		this.equipes = equipes;
 	}
+
+
+
 
 	public Set<Billet> getBillets() {
 		return billets;

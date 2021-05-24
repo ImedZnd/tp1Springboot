@@ -63,13 +63,13 @@ export class BilletComponent implements OnInit {
           return match.name;
           
         },
-        filterFunction(match1?: any, search?: string): boolean {
-          let match = true;
-          Object.keys(match1).map(u => match1.name).filter(it => {
-            match = it.toLowerCase().includes(search);
+        filterFunction(match?: any, search?: string): boolean {
+          let match1 = true;
+          Object.keys(match1).map(u => match.name).filter(it => {
+            match1 = it.toLowerCase().includes(search);
           });
 
-          if (match || search === '') {
+          if (match1 || search === '') {
             return true;
           } else {
             return false
@@ -115,11 +115,16 @@ export class BilletComponent implements OnInit {
   }
 
   editBillet(event):void{
-    var match = {
-      "match_id":event.newData.id,
-      "name" : event.newData.nom,
+    var billet = {
+      "billet_id":event.newData.billet_id,
+      "categorie" : event.newData.categorie,
+      "num_place" : event.newData.num_place,
+      "prix":event.newData.prix,
+      "match":event.newData.match,
     };
-    this.httpBilletService.UpdateBillet(match).subscribe(data => {
+    
+    console.log(billet);
+    this.httpBilletService.UpdateBillet(billet).subscribe(data => {
       event.confirm.resolve(event.newData);
       this.billet.push(data);
       this.ngOnInit();
@@ -131,21 +136,28 @@ export class BilletComponent implements OnInit {
   addBillet(event): void{
 
    
-    var match = {
-      "match_id":event.newData.id,
-      "name" : event.newData.nom,
+    var billet = {
+      "billet_id":event.newData.billet_id,
+      "categorie" : event.newData.categorie,
+      "num_place" : event.newData.num_place,
+      "prix":event.newData.prix,
+      "match":event.newData.match,
     };
 
 
        
-this.httpBilletService.addBillet(match).subscribe(data => {
-  console.log(data);
-  event.confirm.resolve(event.newData);
-  this.billet.push(data);
+    billet.match = {"match_id":billet.match};
+    console.log(billet);
+    this.httpBilletService.addBillet(billet).subscribe(data => {
+      event.confirm.resolve(event.newData);
+      this.billet.push(data);
+      
+      this.ngOnInit();
+    },err => {
+      console.log("errreurrr");
+    })
   
-  this.ngOnInit();
-  
-});;
+
 
   }
 
