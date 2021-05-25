@@ -14,11 +14,7 @@ export class MatchDirectComponent implements OnInit {
 matches:any[]
 matches2:any[]
 liveMatches?:any[]=[]
-winnerEquipe={
-  "equipe_id": null,
-  "name": null,
-  "points": null
-}
+eqq:any={}
 
   constructor(private httpMatchsService:HttpMatchsService,private httpEquipeService:HttpEquipeService) { }
 
@@ -82,43 +78,74 @@ winnerEquipe={
       {
         winner_id=selectedMatch.equipes[1].equipe_id
         console.log(winner_id)
-    //     this.httpEquipeService.getOneEquipe(selectedMatch.equipes[1].equipe_id).subscribe(
-    //     data=>{
-    //       this.winnerEquipe=data 
-    //       console.log(this.winnerEquipe)
-    //   }
-    // )
-    // winner_id=this.winnerEquipe.equipe_id
-    // this.winnerEquipe.points=this.winnerEquipe.points+3
-    // this.httpEquipeService.UpdateEquipe(this.winnerEquipe)      
       }
     }
     if(winner_id!=null){
+
         this.httpEquipeService.getOneEquipe(winner_id).subscribe(
         data=>{
-          this.winnerEquipe=data
-          console.log(this.winnerEquipe)
+         var winnerEquipe={
+            "equipe_id": data.equipe_id,
+            "name": data.name,
+            "points": data.points
+          }
+          console.log(winnerEquipe)
+          this.eqq=winnerEquipe
       }
     )
-    this.winnerEquipe.points=this.winnerEquipe.points+3
-    this.httpEquipeService.UpdateEquipe(this.winnerEquipe)  
+    this.eqq.points+=3
+    this.httpEquipeService.UpdateEquipe(this.eqq).subscribe(
+      data=>{
+        console.log("UpdateEquipe of the winner "+data)
     }
-    var y: number = +selectedMatch.scoreEquipe1;
+  )  
 
-    var match = {
-      "match_id": selectedMatch.match_id,
-      "name": selectedMatch.name,
-      "status": "PLAYED",
-      "winner_id":winner_id,
-      "phase": selectedMatch.phase,
-      "equipes": selectedMatch.equipes,
-      "scoreEquipe1":selectedMatch.scoreEquipe1,
-      "scoreEquipe2":selectedMatch.scoreEquipe2
+  var match = {
+    "match_id": selectedMatch.match_id,
+    "name": selectedMatch.name,
+    "status": "PLAYED",
+    "winner_id":winner_id,
+    "phase": selectedMatch.phase,
+    "equipes": selectedMatch.equipes,
+    "scoreEquipe1":selectedMatch.scoreEquipe1,
+    "scoreEquipe2":selectedMatch.scoreEquipe2
+  }
+  console.log(match);
+  this.httpMatchsService.UpdateMatch(match).subscribe(data => {
+    console.log("result from UpdateMatch :"+data);
+    this.ngOnInit();
+  })
+
+
     }
-    console.log(match);
-    this.httpMatchsService.UpdateMatch(match).subscribe(data => {
-      console.log(data);
-      this.ngOnInit();
-    })
+    else
+    {
+      this.httpEquipeService.getOneEquipe(selectedMatch.equipes[0].equipe_id).subscribe(
+        data=>{
+         var winnerEquipe={
+            "equipe_id": data.equipe_id,
+            "name": data.name,
+            "points": data.points
+          }
+          console.log(winnerEquipe)
+          this.eqq=winnerEquipe
+      }
+    )
+    this.eqq.points+=1
+    this.httpEquipeService.UpdateEquipe(this.eqq).subscribe(data=>console.log(data))  
+    this.httpEquipeService.getOneEquipe(selectedMatch.equipes[1].equipe_id).subscribe(
+      data=>{
+       var winnerEquipe={
+          "equipe_id": data.equipe_id,
+          "name": data.name,
+          "points": data.points
+        }
+        console.log(winnerEquipe)
+        this.eqq=winnerEquipe
+    }
+  )
+  this.eqq.points+=1
+  this.httpEquipeService.UpdateEquipe(this.eqq).subscribe(data=>console.log(data))  
+    }
   }
 }
