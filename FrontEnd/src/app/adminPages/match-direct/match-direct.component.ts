@@ -10,40 +10,9 @@ import { filter } from 'rxjs/operators';
 })
 export class MatchDirectComponent implements OnInit {
 
-
-  data={
-    "match_id": 1,
-    "name": "Tunis VS USA : PHASE_DE_POOL",
-    "dateMatch": null,
-    "winner_id": null,
-    "scoreEquipe1": null,
-    "scoreEquipe2": null,
-    "status": null,
-    "phase": {
-        "phase_id": 1,
-        "name": "PHASE_DE_POOL",
-        "tournoi": {
-            "tournoi_id": 1,
-            "nameTournoi": "super leage"
-        }
-    },
-    "equipes": [
-        {
-            "equipe_id": 1,
-            "name": "Tunis",
-            "points": 0
-        },
-        {
-            "equipe_id": 2,
-            "name": "USA",
-            "points": 0
-        }
-    ]
-}
-data1:any[]=[]
 matches:any[]
 liveMatches?:any[]=[]
-selected:any
+
   constructor(private httpMatchsService:HttpMatchsService) { }
 
   ngOnInit(): void {
@@ -69,8 +38,6 @@ selected:any
     console.log(match);
     this.httpMatchsService.UpdateMatch(match).subscribe(data => {
       console.log(data);
-      //event.confirm.resolve(event.newData);
-      //this.liveMatches.push(data);
       this.ngOnInit();
     })
   }
@@ -88,13 +55,7 @@ selected:any
     console.log(match);
     this.httpMatchsService.UpdateMatch(match).subscribe(data => {
       console.log(data);
-      //event.confirm.resolve(event.newData);
-      //this.liveMatches.push(data);
       this.ngOnInit();
     })
   }
-
-  onChange(value:string) {
-    console.log("the selected value is " + value);
-}
 }
