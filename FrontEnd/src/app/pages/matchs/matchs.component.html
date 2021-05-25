@@ -1,10 +1,42 @@
-<nb-card class="list-card">
-      <nb-card-header>Some Fruits</nb-card-header>
-      <nb-card-body>
-        <nb-list>
-          <nb-list-item>
-          helloo
-          </nb-list-item>
-        </nb-list>
-      </nb-card-body>
-    </nb-card>
+<nb-card class="list-card"> 
+    <nb-card-header>Matches Direct</nb-card-header>
+  <nb-card-body>
+<div class="row" *ngFor="let matche of matches">
+<div class="row" style ="margin-left:5%; background-color: blueviolet;">{{matche.dateMatch}}</div>
+<div class="row">
+  <div class="col" style="text-align: center; margin-top: 25px;">
+  {{matche.equipes[0].name}}
+  </div>
+  <div class="col">
+  <nb-card-body>
+    <div *ngIf="getFlagUrl(matche.equipes[0]) != null; else elseB">
+        <img [src]="getFlagUrl(matche.equipes[0])" class="flag">
+    </div>
+    <ng-template #elseB><div class="centerName">{{equipe.name}}</div></ng-template>
+</nb-card-body>
+</div>
+<div class="col" style="text-align: center; margin-top: 25px;">
+      <input class ="cercle" type="text" nbInput placeholder={{matche.equipes[0].scoreEquipe1}} disabled>
+    </div>
+    <div class="col" style="text-align: center; margin-top: 40px;">
+    <h6>-</h6>
+    </div>
+    <div class="col" style="text-align: center; margin-top: 25px;">
+    <input type="text"  class ="cercle" nbInput placeholder={{matche.equipes[0].scoreEquipe1}} disabled>
+</div>
+<div class="col" style="text-align: center;">
+    <nb-card-body>
+        <div *ngIf="getFlagUrl(matche.equipes[1]) != null; else elseB">
+            <img [src]="getFlagUrl(matche.equipes[1])" class="flag">
+        </div>
+        <ng-template #elseB><div class="centerName">{{equipe.name}}</div></ng-template>
+    </nb-card-body>
+</div>
+<div class="col" style="text-align: center; margin-top: 25px;">
+   {{matche.equipes[1].name}}
+</div>
+
+</div>
+  </div>
+</nb-card-body> 
+</nb-card>

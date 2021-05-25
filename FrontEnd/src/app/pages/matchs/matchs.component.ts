@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NbDialogService } from '@nebular/theme';
 import { LocalDataSource } from 'ng2-smart-table';
+import { findFlagUrlByCountryName, countries  } from 'country-flags-svg';
 import { HttpMatchsService } from '../../services/http-matchs.service';
 import { ShowcaseDialogComponent } from '../modal-overlays/dialog/showcase-dialog/showcase-dialog.component';
 
@@ -11,95 +12,80 @@ import { ShowcaseDialogComponent } from '../modal-overlays/dialog/showcase-dialo
 })
 export class MatchsComponent implements OnInit {
 
-  settings = {
-    mode:'inline', 
-    add: {
-      addButtonContent: '<i class="nb-plus"></i>',
-      createButtonContent: '<i class="nb-checkmark"></i>',
-      cancelButtonContent: '<i class="nb-close"></i>',
-      confirmCreate:true,
-    },
-    edit: {
-      editButtonContent: '<i class="nb-edit"></i>',
-      saveButtonContent: '<i class="nb-checkmark"></i>',
-      cancelButtonContent: '<i class="nb-close"></i>',
-      confirmSave : true,
+ 
 
+  data={
+    "match_id": 1,
+    "name": "Tunis VS USA : PHASE_DE_POOL",
+    "dateMatch": null,
+    "winner_id": null,
+    "scoreEquipe1": null,
+    "scoreEquipe2": null,
+    "status": null,
+    "phase": {
+        "phase_id": 1,
+        "name": "PHASE_DE_POOL",
+        "tournoi": {
+            "tournoi_id": 1,
+            "nameTournoi": "super leage"
+        }
     },
-    delete: {
-      deleteButtonContent: '<i class="nb-trash"></i>',
-      confirmDelete: true,
-    },
-    columns: {
-      match_id: {
-        title: 'code',
-        type: 'number',
-        addable: false,
-        editable:false
-      },
-      name: {
-        title: 'Nom',
-        type: 'string',
-      },
-    }
-  }
+    "equipes": [
+        {
+            "equipe_id": 1,
+            "name": "Tunis",
+            "points": 0
+        },
+        {
+            "equipe_id": 2,
+            "name": "USA",
+            "points": 0
+        }
+    ]
+}
 
-  matches: any[];
-  source: LocalDataSource;
 
-  constructor(private httpMatchService: HttpMatchsService, private dialogService: NbDialogService) {
-    this.source = new LocalDataSource(this.matches);
-   }
+matches:any[]=[]
+equipes:any[]=[]
+flagUrl: any[] = [];
+liveMatches:any[]
+  constructor(private httpMatchsService:HttpMatchsService) { }
 
   ngOnInit(): void {
-    this.httpMatchService.getMatchs().subscribe(data => this.handleSuccessfulResponse(data))
+    this.httpMatchsService.getMatchs().subscribe(data =>this.handleSuccessfulResponse(data));
+    
+  }
+ 
+
+  getFlagUrl(equipe:any){
+    var country = countries.filter(c => c.name.includes(equipe.name) || equipe.name.includes(c.iso3) || equipe.name.includes(c.altSpellings[0]))[0];
+    if(country){
+      var flag = findFlagUrlByCountryName(country.name)
+      return flag;
+    }
+    return null;
   }
 
   handleSuccessfulResponse(response) {
     console.log(response)
     this.matches = response;
-    this.source.load(this.matches);
+    this.matches = this.matches.filter(p=> p.phase.name == "PHASE_DE_POOL")
+    this.equipes = this.matches.map(m => m.equipes.filter(e => e.name))
+    console.log(this.equipes)
+    
   }
 
-  onDeleteConfirm(event){
-    console.log(event.data);
-    const diagRef = this.dialogService.open(ShowcaseDialogComponent, {
-      context:{
-        title: "Delete Match Confirmation",
-        matche: event.data,
-        event: event
-      },
-      closeOnBackdropClick: false
-    }); 
-  }
-
-  addMatch(event){
-    var matche = {
+  editScore(event){
+    var match = {
       "match_id": event.newData.match_id,
       "name": event.newData.name
     }
-
-    this.httpMatchService.addMatch(matche).subscribe(data => {
+    console.log(match);
+    this.httpMatchsService.UpdateMatch(match).subscribe(data => {
       console.log(data);
       event.confirm.resolve(event.newData);
-      this.matches.push(data);
+      this.liveMatches.push(data);
       this.ngOnInit();
     })
   }
-
-  editMatch(event){
-    var matche = {
-      "match_id": event.newData.match_id,
-      "name": event.newData.name
-    }
-    console.log(matche);
-    this.httpMatchService.UpdateMatch(matche).subscribe(data => {
-      console.log(data);
-      event.confirm.resolve(event.newData);
-      this.matches.push(data);
-      this.ngOnInit();
-    })
-
   }
-
-}
