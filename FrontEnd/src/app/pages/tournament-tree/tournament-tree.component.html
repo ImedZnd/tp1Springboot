@@ -1,0 +1,11 @@
+<nb-card-body>
+    
+    <ngttt-single-elimination-tree [tournament]="singleEliminationTournament"
+                                  [matchTemplate]="matchTemplate"></ngttt-single-elimination-tree>
+
+
+  <ng-template #matchTemplate let-match>
+    <ngx-matchtree [match]="match"></ngx-matchtree>
+  </ng-template>
+
+</nb-card-body>

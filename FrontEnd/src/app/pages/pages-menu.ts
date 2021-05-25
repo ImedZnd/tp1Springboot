@@ -16,7 +16,7 @@ export const MENU_ITEMS: NbMenuItem[] = [
       },
       {
         title: 'Knockout Phase',
-        link: '/pages/layout/stepper',
+        link: '/pages/tournamentTree',
       },
     ],
   },

@@ -13,6 +13,11 @@ import { EquipesComponent } from './equipes/equipes.component';
 import { GroupesComponent } from './groupes/groupes.component';
 import { NgxPayPalModule } from 'ngx-paypal';
 import {BilletsaleComponent} from './billetsale/billetsale.component';
+import { MatchtreeComponent } from './matchtree/matchtree.component';
+import { TournamentTreeComponent } from './tournament-tree/tournament-tree.component';
+import { NgttSingleEliminationTreeModule } from '../../../ng-tournament-tree/src/lib/single-elimination-tree/ngtt-single-elimination-tree.module';
+import { NgttDoubleEliminationTreeModule } from '../../../ng-tournament-tree/src/lib/double-elimination-tree/ngtt-double-elimination-tree.module';
+import { NgTournamentTreeModule } from '../../../ng-tournament-tree/src/lib/ng-tournament-tree.module';
 
 @NgModule({
   imports: [
@@ -28,7 +33,10 @@ import {BilletsaleComponent} from './billetsale/billetsale.component';
     NbListModule,
     NbButtonModule,
     NgxPayPalModule,
-    NbSelectModule
+    NbSelectModule,
+    NgttSingleEliminationTreeModule,
+    NgttDoubleEliminationTreeModule,
+    NgTournamentTreeModule
     
   ],
   declarations: [
@@ -36,7 +44,9 @@ import {BilletsaleComponent} from './billetsale/billetsale.component';
     MatchsComponent,
     EquipesComponent,
     GroupesComponent,
-    BilletsaleComponent
+    BilletsaleComponent,
+    MatchtreeComponent,
+    TournamentTreeComponent
   ],
 })
 export class PagesModule {
