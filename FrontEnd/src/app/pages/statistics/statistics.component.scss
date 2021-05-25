@@ -1,0 +1,92 @@
+$base-color: lightskyblue;
+
+.statsTitle{
+    font-weight: bold;
+    font-size: 40px;
+    font-family:Verdana, 'Segoe UI', Tahoma, Geneva,  sans-serif;
+}
+
+.matchJoueContainer{
+    align-items: center !important;
+    width: 100%;
+    margin-left: 40%;
+    margin-top: 75px;
+   
+}
+
+
+.matchJoueValue{
+    font-weight: 800;
+    font-size: 60px;
+    color: $base-color;
+}
+
+.matchJoueLabel{
+ 
+    font-size: 15px;
+    padding-top: 20px;
+}
+
+.dividerDiv{
+    margin-top: 20px;
+    background-color: $base-color;
+    height: 35px !important;
+}
+
+.subTitleDiv{
+    font-weight: bold;
+    font-size: 30px;
+    font-family: Verdana,'Segoe UI', Tahoma, Geneva,  sans-serif;
+    margin-top: 20px;
+    margin-bottom: 30px;
+}
+
+.teamCols{
+   align-items: center;
+   padding-left: 10%;
+   
+}
+
+.numberDiv{
+    
+    clip-path: polygon(29% 11%, 87% 12%, 82% 67%, 23% 67%);
+    background-color:lightskyblue;
+    height: 150px;
+    width: 150px;
+   
+}
+
+.numberText{
+    margin-left: 40%;
+    font-size: 50px;
+    padding-top:40%;
+    font-weight: bold;
+}
+
+.countryText{
+    margin-left: 30px;
+    margin-top:5px;
+    margin-bottom: 5px;
+}
+
+.goalsText{
+    font-size: 30px;
+}
+
+.goalsNumberText{
+    margin-left: 20px;
+}
+
+.flagDiv{
+    
+}
+
+.numberDiv{
+    
+}
+
+.flag{
+    width: 30%;
+    height: auto;
+    
+}

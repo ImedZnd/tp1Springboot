@@ -10,6 +10,7 @@ import { EquipesComponent } from './equipes/equipes.component';
 import { GroupesComponent } from './groupes/groupes.component';
 import {BilletsaleComponent} from './billetsale/billetsale.component';
 import { TournamentTreeComponent } from './tournament-tree/tournament-tree.component';
+import {StatisticsComponent} from './statistics/statistics.component';
 
 const routes: Routes = [{
   path: '',
@@ -34,6 +35,10 @@ const routes: Routes = [{
     {
       path: 'tickets',
       component: BilletsaleComponent,
+    },
+    {
+      path: 'statistics',
+      component: StatisticsComponent,
     },
     {
       path: 'layout',

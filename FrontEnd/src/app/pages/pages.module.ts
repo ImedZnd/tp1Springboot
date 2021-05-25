@@ -18,6 +18,7 @@ import { TournamentTreeComponent } from './tournament-tree/tournament-tree.compo
 import { NgttSingleEliminationTreeModule } from '../../../ng-tournament-tree/src/lib/single-elimination-tree/ngtt-single-elimination-tree.module';
 import { NgttDoubleEliminationTreeModule } from '../../../ng-tournament-tree/src/lib/double-elimination-tree/ngtt-double-elimination-tree.module';
 import { NgTournamentTreeModule } from '../../../ng-tournament-tree/src/lib/ng-tournament-tree.module';
+import { StatisticsComponent } from './statistics/statistics.component';
 
 @NgModule({
   imports: [
@@ -36,7 +37,8 @@ import { NgTournamentTreeModule } from '../../../ng-tournament-tree/src/lib/ng-t
     NbSelectModule,
     NgttSingleEliminationTreeModule,
     NgttDoubleEliminationTreeModule,
-    NgTournamentTreeModule
+    NgTournamentTreeModule,
+    
     
   ],
   declarations: [
@@ -46,7 +48,8 @@ import { NgTournamentTreeModule } from '../../../ng-tournament-tree/src/lib/ng-t
     GroupesComponent,
     BilletsaleComponent,
     MatchtreeComponent,
-    TournamentTreeComponent
+    TournamentTreeComponent,
+    StatisticsComponent
   ],
 })
 export class PagesModule {

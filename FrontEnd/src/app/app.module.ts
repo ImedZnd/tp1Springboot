@@ -26,6 +26,7 @@ import { HttpInterceptorService } from './services/http-interceptor.service';
 import { OwlDateTimeModule, OwlNativeDateTimeModule } from 'ng-pick-datetime';
 import { SmartTableDatepickerComponent, SmartTableDatepickerRenderComponent } from './adminPages/smart-table-datepicker/smart-table-datepicker.component';
 
+
 @NgModule({
   declarations: [AppComponent, LoginComponent, SmartTableDatepickerComponent, SmartTableDatepickerRenderComponent],
   imports: [

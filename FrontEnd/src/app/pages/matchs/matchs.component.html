@@ -1,4 +1,4 @@
-<nb-card class="list-card" > 
+<nb-card class="list-card"> 
     <nb-card-header>Matches Direct</nb-card-header>
   <nb-card-body class='nopadnomarg'>
 <div class="row" *ngFor="let matche of matches" >
@@ -17,13 +17,13 @@
 </nb-card-body>
 </div>
 <div class="col" style="text-align: center; margin-top: 25px;">
-      <input class ="cercle" type="text" nbInput placeholder={{matche.equipes[0].scoreEquipe1}} disabled>
+      <div class ="cercle"><div class="circleText"> {{matche.scoreEquipe1}} </div></div>
     </div>
     <div class="col" style="text-align: center; margin-top: 40px;">
     <h6>-</h6>
     </div>
     <div class="col" style="text-align: center; margin-top: 25px;">
-    <input type="text"  class ="cercle" nbInput placeholder={{matche.equipes[0].scoreEquipe1}} disabled>
+    <div  class ="cercle"  ><div class="circleText">  {{matche.scoreEquipe2}}</div></div>
 </div>
 <div class="col" style="text-align: center;">
     <nb-card-body>

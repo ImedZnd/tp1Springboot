@@ -9,8 +9,14 @@
     width: 40px;
     height: 40px;
     border-radius: 20px;
-    background:transparent;
-    color: black;
+    
+    
+    background-color: #3C4660;
+}
+
+.circleText{
+    font-size: 20px;
+    padding-top: 20%;
 }
 
 .matchHeader{
@@ -19,9 +25,7 @@
      margin-left: 4%;
      font-size: 24px;
      height: 100%;
-  
-    
-     
+     font-weight: bold;
 }
 
 nb-card-body{

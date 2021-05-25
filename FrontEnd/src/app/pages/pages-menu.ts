@@ -64,4 +64,9 @@ export const MENU_ITEMS: NbMenuItem[] = [
     icon: 'people-outline',
     link: '/pages/tickets'
   },
+  {
+    title: 'Statistiques',
+    icon: 'people-outline',
+    link: '/pages/statistics'
+  },
 ];
