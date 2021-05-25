@@ -25,14 +25,14 @@ export class AuthService {
 
 
   isUserLoggedIn() {
-    let user = localStorage.get("username");
+    let user = localStorage.getItem("username");
     console.log(!(user === null));
     return !(user === null);
   }
 
   getLoggedInUser(): any{
     if(this.isUserLoggedIn)
-      return localStorage.get("username");
+      return localStorage.getItem("username");
     else
       return null
   }

@@ -2,30 +2,23 @@ import { NbMenuItem } from '@nebular/theme';
 
 export const MENU_ITEMS: NbMenuItem[] = [
   {
-    title: 'Statistics',
-    icon: 'bar-chart-outline',
-    link: '/pages/match',
-    home: true,
+    title: 'Equipes',
+    icon: 'people-outline',
+    link: '/pages/equipes'
   },
   {
     title: 'Matches',
     icon: 'shield-outline',
     children: [
       {
-        title: 'Knockout Phase',
-        link: '/pages/layout/stepper',
-      },
-      {
         title: 'Group Phase',
         link: '/pages/groupPhase',
       },
-
+      {
+        title: 'Knockout Phase',
+        link: '/pages/layout/stepper',
+      },
     ],
-  },
-  {
-    title: 'Equipes',
-    icon: 'people-outline',
-    link: '/pages/equipes'
   },
   {
     title: 'Groups',

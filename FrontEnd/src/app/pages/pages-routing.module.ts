@@ -13,16 +13,12 @@ const routes: Routes = [{
   component: PagesComponent,
   children: [
     {
-      path: 'dashboard',
-      component: ECommerceComponent,
+      path: 'equipes',
+      component: EquipesComponent,
     },
     {
       path: 'groupPhase',
       component: MatchsComponent,
-    },
-    {
-      path: 'equipes',
-      component: EquipesComponent,
     },
     {
       path: 'layout',
@@ -76,7 +72,7 @@ const routes: Routes = [{
     },
     {
       path: '',
-      redirectTo: 'dashboard',
+      redirectTo: 'equipes',
       pathMatch: 'full',
     },
     {
