@@ -139,7 +139,7 @@ export class JoueurComponent implements OnInit {
 
   editMatch(event){
     var joueur = {
-      "match_id": event.newData.match_id,
+      "joueur_id": event.newData.match_id,
       "name": event.newData.name
     }
     console.log(joueur);

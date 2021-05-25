@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpMatchsService } from '../../services/http-matchs.service';
 import { map } from 'rxjs/operators';
-import 'rxjs/add/observable/of';
+import { filter } from 'rxjs/operators';
 
 @Component({
   selector: 'ngx-match-direct',
@@ -40,35 +40,61 @@ export class MatchDirectComponent implements OnInit {
         }
     ]
 }
-
-matches:any[]=[]
-equipes:any[]=[]
-liveMatches:any[]
+data1:any[]=[]
+matches:any[]
+liveMatches?:any[]=[]
+selected:any
   constructor(private httpMatchsService:HttpMatchsService) { }
 
   ngOnInit(): void {
     this.httpMatchsService.getMatchs().subscribe(data =>this.handleSuccessfulResponse(data));
-  }
+   }   
 
   handleSuccessfulResponse(response) {
-    console.log(response)
     this.matches = response;
-    this.equipes = this.matches.map(m => m.equipes.filter(e => e.name))
-    console.log(this.equipes)
-    
+    this.liveMatches = this.matches.filter(one => one.status === "LIVE")
+    console.log(this.liveMatches)
   }
 
-  editScore(event){
+  editScore(event,selectedMatch:any){
     var match = {
-      "match_id": event.newData.match_id,
-      "name": event.newData.name
+      "match_id": selectedMatch.match_id,
+      "name": selectedMatch.name,
+      "status": "LIVE",
+      "phase": selectedMatch.phase,
+      "equipes": selectedMatch.equipes,
+      "scoreEquipe1":event,
+      "scoreEquipe2":selectedMatch.scoreEquipe2
     }
     console.log(match);
     this.httpMatchsService.UpdateMatch(match).subscribe(data => {
       console.log(data);
-      event.confirm.resolve(event.newData);
-      this.liveMatches.push(data);
+      //event.confirm.resolve(event.newData);
+      //this.liveMatches.push(data);
       this.ngOnInit();
     })
   }
+
+  editScore2(event,selectedMatch:any){
+    var match = {
+      "match_id": selectedMatch.match_id,
+      "name": selectedMatch.name,
+      "status": "LIVE",
+      "phase": selectedMatch.phase,
+      "equipes": selectedMatch.equipes,
+      "scoreEquipe1":selectedMatch.scoreEquipe1,
+      "scoreEquipe2":event
+    }
+    console.log(match);
+    this.httpMatchsService.UpdateMatch(match).subscribe(data => {
+      console.log(data);
+      //event.confirm.resolve(event.newData);
+      //this.liveMatches.push(data);
+      this.ngOnInit();
+    })
+  }
+
+  onChange(value:string) {
+    console.log("the selected value is " + value);
+}
 }

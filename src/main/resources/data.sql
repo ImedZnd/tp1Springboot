@@ -21,9 +21,9 @@ INSERT INTO phase (phase_id,name,tournoi_id) VALUES (4,'QUART_DE_FINALE',1);
 INSERT INTO phase (phase_id,name,tournoi_id) VALUES (5,'DEMI_FINALE',1);
 INSERT INTO phase (phase_id,name,tournoi_id) VALUES (6,'FINALE',1);
 
-INSERT INTO matchs (match_id,name,phase_id,status) VALUES (1,'match name 1 ',1,"SOON");
-INSERT INTO matchs (match_id,name,phase_id,status) VALUES (2,'name 2 match ',1,"LIVE");
-INSERT INTO matchs (match_id,name,phase_id,status) VALUES (3,'third match 3',2,"LIVE");
+INSERT INTO matchs (match_id,name,phase_id,status,score_equipe1,score_equipe2) VALUES (1,'match name 1 ',1,"SOON","1","1");
+INSERT INTO matchs (match_id,name,phase_id,status,score_equipe1,score_equipe2) VALUES (2,'name 2 match ',1,"LIVE","1","0");
+INSERT INTO matchs (match_id,name,phase_id,status,score_equipe1,score_equipe2) VALUES (3,'third match 3',2,"LIVE","3","2");
 INSERT INTO billet (billet_id,categorie,num_place,prix,match_id) VALUES (1,'VIP','512',10,1);
 INSERT INTO billet (billet_id,categorie,num_place,prix,match_id) VALUES (2,'VIP','551',10,1);
 INSERT INTO billet (billet_id,categorie,num_place,prix,match_id) VALUES (3,'normal','854',10,1);

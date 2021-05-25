@@ -1,12 +1,13 @@
 <nb-card class="list-card"> 
     <nb-card-header>Matches Direct</nb-card-header>
     <nb-card-body >
-<div class="row" *ngFor="let matche of matches">
+<div class="row" *ngFor="let matche of liveMatches; let i = index">
 
     <div class="col">{{matche.equipes[0].name}}</div>
     
     <div class="col">    
-        <nb-select selected="{{matche.scoreEquipe1}}" (editConfirm)="editScore($event)">
+        <nb-select  selected="{{matche.scoreEquipe1}}" (selectedChange)="editScore($event,matche)" >
+            <nb-option value="0">0</nb-option>
             <nb-option value="1">1</nb-option>
             <nb-option value="2">2</nb-option>
             <nb-option value="3">3</nb-option>
@@ -16,7 +17,8 @@
     </div>
 
     <div class="col">    
-        <nb-select selected="{{matche.scoreEquipe2}}" (editConfirm)="editScore($event)">
+        <nb-select  selected="{{matche.scoreEquipe2}}" (selectedChange)="editScore2($event,matche)">
+        <nb-option value="0">0</nb-option>
         <nb-option value="1">1</nb-option>
         <nb-option value="2">2</nb-option>
         <nb-option value="3">3</nb-option>

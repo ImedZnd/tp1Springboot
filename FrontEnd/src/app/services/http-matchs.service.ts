@@ -21,6 +21,7 @@ export class HttpMatchsService {
 }
 
 UpdateMatch(matche){
+  console.log('UpdateMatch called with data :'+matche)
   return this.httpClient
   .put<any>("http://localhost:8083/api/match/update",matche)
 }
