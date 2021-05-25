@@ -1,0 +1,67 @@
+
+
+<div class="lists row">
+    <div class="col-md-12 col-lg-12 col-xxxl-12">
+      <nb-card class="list-card">
+        <nb-card-header>Tickets disponibles</nb-card-header>
+        <nb-card-body>
+          <nb-list>
+            <nb-list-item *ngFor="let match of matches">
+              <div class='container'>
+               <div class='row'> 
+                  <div class='col' style="align-items: center;"> 
+                     
+                     <div class='row' class='nomMatch'>
+                       {{match.name}}  
+                     </div> 
+                  </div> 
+                  <div class='col' style="align-items: center;"> 
+                    <div class='row' class='titreBillet'>
+                         Date du match
+                    </div>
+                    <div class='row'  class='contentBillet'>
+                      {{match.dateMatch | date:'short'}}  
+                    </div> 
+                    
+                  </div> 
+                  <div class='col' style="align-items: center;"> 
+                    
+                    <div class='row' class='titreBillet'>
+                       Type du place
+                    </div> 
+                    <div class='row'>
+                      <nb-select selected='normal' class='contentBillet'  (selectedChange)="editPrice($event)">
+                        <nb-option value='normal'>
+                          Normal
+                        </nb-option> 
+                        <nb-option value='VIP'>
+                           VIP
+                         </nb-option>
+                     </nb-select>  
+                    </div> 
+                    
+                  </div> 
+                  <div class='col' style="align-items: center;"> 
+                    <div class='row' class='titreBillet'> 
+                      Prix du ticket
+                    </div>
+                    <div class='col' class='contentBillet' style="align-items: center;"> 
+                      {{price}}$
+                    </div>
+                    
+                   
+                  </div> 
+                  <div class='col' style="align-items: center;"> 
+                     <button nbButton status='primary' (click)="toggleModal(match)"> Acheter </button>
+                  </div>
+                </div>
+              </div> 
+            </nb-list-item>
+            
+          </nb-list>
+        </nb-card-body>
+      </nb-card>
+   </div>
+  </div>
+
+

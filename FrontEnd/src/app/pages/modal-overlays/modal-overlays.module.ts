@@ -32,6 +32,7 @@ import {
   NgxPopoverTabsComponent,
 } from './popovers/popover-examples.component';
 import { TooltipComponent } from './tooltip/tooltip.component';
+import { NgxPayPalModule } from 'ngx-paypal';
 
 
 const COMPONENTS = [
@@ -73,6 +74,7 @@ const MODULES = [
   NbSelectModule,
   NbTooltipModule,
   NbListModule,
+  NgxPayPalModule
 ];
 
 const SERVICES = [

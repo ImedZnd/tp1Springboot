@@ -1,0 +1,28 @@
+@import '../../@theme/styles/themes';
+
+@include nb-install-component() {
+  .list-card {
+    nb-card-header {
+      border-bottom: none;
+    }
+
+    nb-card-body {
+      padding: 0;
+    }
+  }
+}
+
+
+.titreBillet{
+  font-weight: 600;
+  text-decoration: underline;
+}
+
+.contentBillet{
+  margin-top: 10px;
+}
+
+.nomMatch{
+  font-weight: 700;
+  
+}

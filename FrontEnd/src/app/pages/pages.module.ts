@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { NbButtonModule, NbCardModule, NbDialogModule, NbListModule, NbMenuModule } from '@nebular/theme';
+import { NbButtonModule, NbCardModule, NbDialogModule, NbListModule, NbMenuModule, NbSelectComponent, NbSelectModule } from '@nebular/theme';
 
 import { ThemeModule } from '../@theme/theme.module';
 import { PagesComponent } from './pages.component';
@@ -11,6 +11,8 @@ import { MatchsComponent } from './matchs/matchs.component';
 import { Ng2SmartTableModule } from 'ng2-smart-table';
 import { EquipesComponent } from './equipes/equipes.component';
 import { GroupesComponent } from './groupes/groupes.component';
+import { NgxPayPalModule } from 'ngx-paypal';
+import {BilletsaleComponent} from './billetsale/billetsale.component';
 
 @NgModule({
   imports: [
@@ -25,12 +27,16 @@ import { GroupesComponent } from './groupes/groupes.component';
     NbDialogModule.forRoot(),
     NbListModule,
     NbButtonModule,
+    NgxPayPalModule,
+    NbSelectModule
+    
   ],
   declarations: [
     PagesComponent,
     MatchsComponent,
     EquipesComponent,
     GroupesComponent,
+    BilletsaleComponent
   ],
 })
 export class PagesModule {

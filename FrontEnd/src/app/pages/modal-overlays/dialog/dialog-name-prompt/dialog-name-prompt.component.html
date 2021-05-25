@@ -1,10 +1,25 @@
 <nb-card>
-  <nb-card-header>Enter your name</nb-card-header>
+  <nb-card-header>Details d'achat</nb-card-header>
   <nb-card-body>
-    <input #name nbInput placeholder="Name">
+    <div class='row'>
+      <div class='col'>
+             Match
+      </div>
+      <div class='col'>
+           {{match.name}}
+      </div>
+    </div>
+    <div class='row'>
+      <div class='col'>
+             Prix
+      </div>
+      <div class='col'>
+           {{prix}}$
+      </div>
+    </div>
+    
   </nb-card-body>
   <nb-card-footer>
-    <button class="cancel" nbButton status="danger" (click)="cancel()">Cancel</button>
-    <button nbButton status="success" (click)="submit(name.value)">Submit</button>
+    <ngx-paypal [config]="payPalConfig"></ngx-paypal>
   </nb-card-footer>
 </nb-card>

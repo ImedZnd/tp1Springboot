@@ -8,6 +8,7 @@ import { NotFoundComponent } from './miscellaneous/not-found/not-found.component
 import { MatchsComponent } from './matchs/matchs.component';
 import { EquipesComponent } from './equipes/equipes.component';
 import { GroupesComponent } from './groupes/groupes.component';
+import {BilletsaleComponent} from './billetsale/billetsale.component';
 
 const routes: Routes = [{
   path: '',
@@ -24,6 +25,10 @@ const routes: Routes = [{
     {
       path: 'groupes',
       component: GroupesComponent,
+    },
+    {
+      path: 'tickets',
+      component: BilletsaleComponent,
     },
     {
       path: 'layout',
