@@ -21,10 +21,10 @@ export const MENU_ITEMS: NbMenuItem[] = [
     ],
   },
   {
-    title: 'Groups',
+    title: 'Groupes',
     icon: 'grid-outline',
-    link: '/pages/ui-features',
-    children: [
+    link: '/pages/groupes',
+    /*children: [
       {
         title: 'Group A',
         link: '/pages/ui-features/grid',
@@ -57,6 +57,6 @@ export const MENU_ITEMS: NbMenuItem[] = [
         title: 'Group H',
         link: '/pages/ui-features/search-fields',
       },
-    ],
+    ],*/
   },
 ];

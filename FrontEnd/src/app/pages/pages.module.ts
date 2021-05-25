@@ -10,6 +10,7 @@ import { MiscellaneousModule } from './miscellaneous/miscellaneous.module';
 import { MatchsComponent } from './matchs/matchs.component';
 import { Ng2SmartTableModule } from 'ng2-smart-table';
 import { EquipesComponent } from './equipes/equipes.component';
+import { GroupesComponent } from './groupes/groupes.component';
 
 @NgModule({
   imports: [
@@ -29,6 +30,7 @@ import { EquipesComponent } from './equipes/equipes.component';
     PagesComponent,
     MatchsComponent,
     EquipesComponent,
+    GroupesComponent,
   ],
 })
 export class PagesModule {

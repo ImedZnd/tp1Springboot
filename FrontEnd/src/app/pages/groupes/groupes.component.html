@@ -1,0 +1,19 @@
+<nb-card class="list-card" *ngFor="let title of groupeTitles; index as i"> 
+    <nb-card-header>{{title}}</nb-card-header>
+    <nb-card-body>
+        <div class="row pb-4" *ngFor="let rowEquipe of equipes[i]; index as x">
+            <div class="col">
+                <div *ngIf="getFlagUrl(equipes[i][x]) != null; else elseB">
+                    <img [src]="getFlagUrl(equipes[i][x])" class="flag">
+                </div>
+                <ng-template #elseB><div class="centerName">{{equipes[i][x]}}</div></ng-template>
+            </div>
+            <div class="col" style="text-align: center; margin-top: 25px;">
+                {{equipes[i][x].name}}
+            </div>
+            <div class="col" style="text-align: center; margin-top: 25px;">
+                {{equipes[i][x].points}}
+            </div>
+        </div>
+    </nb-card-body> 
+</nb-card>

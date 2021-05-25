@@ -7,6 +7,7 @@ import { ECommerceComponent } from './e-commerce/e-commerce.component';
 import { NotFoundComponent } from './miscellaneous/not-found/not-found.component';
 import { MatchsComponent } from './matchs/matchs.component';
 import { EquipesComponent } from './equipes/equipes.component';
+import { GroupesComponent } from './groupes/groupes.component';
 
 const routes: Routes = [{
   path: '',
@@ -19,6 +20,10 @@ const routes: Routes = [{
     {
       path: 'groupPhase',
       component: MatchsComponent,
+    },
+    {
+      path: 'groupes',
+      component: GroupesComponent,
     },
     {
       path: 'layout',
