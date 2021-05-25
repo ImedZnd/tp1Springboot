@@ -1,11 +1,11 @@
 <nb-card>
   <nb-card-header>{{ title }}</nb-card-header>
-  <nb-card-body *ngIf='equipe != null'>
+  <nb-card-body >
     <nb-list>
-        <nb-list-item *ngFor="let joueur of equipe.joueurs">
-          {{ joueur.name }}
-        </nb-list-item>
-      </nb-list>
+      <nb-list-item *ngFor="let joueur of joueurs">
+        {{ joueur.name }}
+      </nb-list-item>
+    </nb-list>
   </nb-card-body>
   <nb-card-footer>
     <div class="d-inline p-5">

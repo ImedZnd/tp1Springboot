@@ -6,6 +6,7 @@ import {
   NbCheckboxModule,
   NbDialogModule,
   NbInputModule,
+  NbListModule,
   NbPopoverModule,
   NbSelectModule,
   NbTabsetModule,
@@ -71,6 +72,7 @@ const MODULES = [
   NbInputModule,
   NbSelectModule,
   NbTooltipModule,
+  NbListModule,
 ];
 
 const SERVICES = [

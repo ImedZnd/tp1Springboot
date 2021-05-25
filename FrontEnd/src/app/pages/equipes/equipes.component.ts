@@ -49,14 +49,15 @@ export class EquipesComponent implements OnInit {
   }
 
   showJouers(event,equipe){
-    console.log(equipe)
-    const diagRef = this.diaglog.open(ShowcaseDialogComponent, {
-      context:{
-        title: "Liste des Joueurs de : "+equipe.name,
-        equipe: equipe,
-      },
-      closeOnBackdropClick: false
-    }); 
+    this.httpEquipeService.getJoueursByEquipeId(equipe.equipe_id).subscribe(data => {
+      const diagRef = this.diaglog.open(ShowcaseDialogComponent, {
+        context:{
+          title: "Liste des Joueurs de : "+equipe.name,
+          joueurs: data,
+        },
+        closeOnBackdropClick: false
+      }); 
+    });
   }
 
 }

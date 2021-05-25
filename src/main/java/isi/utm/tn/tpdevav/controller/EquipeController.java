@@ -1,6 +1,7 @@
 package isi.utm.tn.tpdevav.controller;
 
 import java.util.List;
+import java.util.Set;
 
 import javax.validation.Valid;
 
@@ -11,6 +12,7 @@ import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import isi.utm.tn.tpdevav.model.Equipe;
+import isi.utm.tn.tpdevav.model.Joueur;
 import isi.utm.tn.tpdevav.service.EquipeService;
 
 @RestController
@@ -55,5 +57,13 @@ public class EquipeController {
         Equipe equipe1 = equipeService.updateEquipe(equipe);
         if(equipe1 == null) new ResponseEntity<>(equipe,HttpStatus.CONFLICT);
         return new ResponseEntity<>(equipe1, HttpStatus.OK);
-    }    
+    }
+    
+    @CrossOrigin(origins = "*")
+    //@PreAuthorize("hasAnyRole('USER', 'ADMIN')")
+    @GetMapping("/{id}/joueurs")
+    public ResponseEntity<Set<Joueur>> getJoueurs(@PathVariable("id") Long id)
+    {
+        return new ResponseEntity<>(equipeService.getJoueursByEquipeId(id), HttpStatus.OK);
+    } 
 }

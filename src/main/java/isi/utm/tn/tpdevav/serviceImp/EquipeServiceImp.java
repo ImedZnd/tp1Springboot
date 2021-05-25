@@ -1,11 +1,14 @@
 package isi.utm.tn.tpdevav.serviceImp;
 
+import java.util.Collection;
 import java.util.List;
+import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import isi.utm.tn.tpdevav.model.Equipe;
+import isi.utm.tn.tpdevav.model.Joueur;
 import isi.utm.tn.tpdevav.repository.EquipeRepository;
 import isi.utm.tn.tpdevav.service.EquipeService;
 
@@ -44,6 +47,12 @@ public class EquipeServiceImp implements EquipeService {
     @Override
     public List<Equipe> getAll() {
         return equipeRepository.findAll();
+    }
+
+    @Override
+    public Set<Joueur> getJoueursByEquipeId(Long id) {
+        Equipe equipe = getById(id);
+        return equipe.getJoueurs();
     }
     
 }

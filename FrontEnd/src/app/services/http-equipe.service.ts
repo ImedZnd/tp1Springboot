@@ -23,4 +23,9 @@ UpdateEquipe(equipe){
 DeleteEquipe(id){
   return this.httpClient.delete<any>("http://localhost:8083/api/equipe/delete/"+id)
 }
+
+getJoueursByEquipeId(id){
+  return this.httpClient.get<any>("http://localhost:8083/api/equipe/"+id+"/joueurs")
+}
+
 }

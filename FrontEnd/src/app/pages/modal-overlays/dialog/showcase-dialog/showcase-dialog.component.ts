@@ -11,7 +11,7 @@ export class ShowcaseDialogComponent {
 
   @Input() title: string;
   @Input() matche: any;
-  @Input() equipe: any;
+  @Input() joueurs: any[];
   @Input() event: any;
 
   constructor(protected ref: NbDialogRef<ShowcaseDialogComponent>) {}
