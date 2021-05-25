@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { NbCardModule, NbDialogModule, NbMenuModule } from '@nebular/theme';
+import { NbCardModule, NbDialogModule, NbListModule, NbMenuModule } from '@nebular/theme';
 
 import { ThemeModule } from '../@theme/theme.module';
 import { PagesComponent } from './pages.component';
@@ -22,6 +22,7 @@ import { EquipesComponent } from './equipes/equipes.component';
     Ng2SmartTableModule,
     NbCardModule,
     NbDialogModule.forRoot(),
+    NbListModule,
   ],
   declarations: [
     PagesComponent,

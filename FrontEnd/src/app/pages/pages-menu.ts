@@ -26,7 +26,7 @@ export const MENU_ITEMS: NbMenuItem[] = [
       },
       {
         title: 'Group Phase',
-        link: '/pages/layout/list',
+        link: '/pages/groupPhase',
       },
 
     ],
