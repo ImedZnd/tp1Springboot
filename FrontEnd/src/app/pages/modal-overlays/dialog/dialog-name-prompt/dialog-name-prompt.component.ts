@@ -17,6 +17,7 @@ export class DialogNamePromptComponent {
 
   @Input() match:any
   @Input() prix:any
+  @Input() type:any
   constructor(protected ref: NbDialogRef<DialogNamePromptComponent>) {
     this.initConfig();
   }

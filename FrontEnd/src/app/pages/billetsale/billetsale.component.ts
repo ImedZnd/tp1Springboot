@@ -61,20 +61,18 @@ export class BilletsaleComponent implements OnInit {
 
       }
 
+    
+
       toggleModal(_match){
         const diagRef = this.diaglog.open(DialogNamePromptComponent, {
             context:{
               match: _match,
-              prix: this.price
+              prix: this.price,
+              type: this.price=='105'? 'VIP': 'Normal'
             },
             
           });
           console.log(_match)
       }
-
-      
-
-
-
 
 }

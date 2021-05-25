@@ -12,3 +12,34 @@
     background:transparent;
     color: black;
 }
+
+.matchHeader{
+     
+     font-weight: 600;
+     margin-left: 4%;
+     font-size: 24px;
+     height: 100%;
+  
+    
+     
+}
+
+nb-card-body{
+    overflow-x:hidden !important;
+    overflow-y: hidden !important;
+}
+
+.matchHeaderContainer{
+    width: 100%;
+    background-color: #3C4660;
+    height: 45px;
+}
+
+.headerText{
+    margin-top: 1.1%;
+}
+
+.nopadnomarg{
+ 
+    padding: 0 !important;
+}

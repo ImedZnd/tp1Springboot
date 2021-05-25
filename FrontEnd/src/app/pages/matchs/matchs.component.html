@@ -1,8 +1,9 @@
-<nb-card class="list-card"> 
+<nb-card class="list-card" > 
     <nb-card-header>Matches Direct</nb-card-header>
-  <nb-card-body>
-<div class="row" *ngFor="let matche of matches">
-<div class="row" style ="margin-left:5%; background-color: blueviolet;">{{matche.dateMatch}}</div>
+  <nb-card-body class='nopadnomarg'>
+<div class="row" *ngFor="let matche of matches" >
+  <div class="matchHeaderContainer"><div class='matchHeader'><div class='headerText'>{{matche.dateMatch | date:'short'}}</div></div></div>
+
 <div class="row">
   <div class="col" style="text-align: center; margin-top: 25px;">
   {{matche.equipes[0].name}}
@@ -38,5 +39,7 @@
 
 </div>
   </div>
+
+  
 </nb-card-body> 
 </nb-card>
