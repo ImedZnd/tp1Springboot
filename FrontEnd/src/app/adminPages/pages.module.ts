@@ -16,6 +16,7 @@ import { EquipeComponent } from './equipe/equipe.component';
 import { MatchDirectComponent } from './match-direct/match-direct.component';
 import { NbListModule } from '@nebular/theme';
 import { NbSelectModule } from '@nebular/theme';
+import { NbButtonModule } from '@nebular/theme';
 
 @NgModule({
   imports: [
@@ -29,7 +30,8 @@ import { NbSelectModule } from '@nebular/theme';
     NbCardModule,
     NbDialogModule.forRoot(),
     NbListModule,
-    NbSelectModule
+    NbSelectModule,
+    NbButtonModule
   ],
   declarations: [
     PagesComponent,

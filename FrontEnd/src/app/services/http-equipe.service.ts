@@ -11,6 +11,10 @@ export class HttpEquipeService {
   getEquipes() {
     return this.httpClient.get<any[]>("http://localhost:8083/api/equipe/all");
   }
+  
+  getOneEquipe(id:number) {
+    return this.httpClient.get<any>("http://localhost:8083/api/equipe/one/"+id);
+  }
 
   addEquipe(equipe){
   return this.httpClient.post<any>("http://localhost:8083/api/equipe/add",equipe)

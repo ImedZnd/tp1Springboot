@@ -39,6 +39,14 @@ public class EquipeController {
     {
         return new ResponseEntity<>(equipeService.getAll(), HttpStatus.OK);
     }
+    
+    @CrossOrigin(origins = "*")
+    @PreAuthorize("hasAnyRole('USER', 'ADMIN')")
+    @GetMapping("/one/{id}")
+    public ResponseEntity<Equipe> allOneEquipe(@PathVariable("id") Long id)
+    {
+        return new ResponseEntity<>(equipeService.getById(id), HttpStatus.OK);
+    }
 
     @CrossOrigin(origins = "*")
     @PreAuthorize("hasRole('ADMIN')")
