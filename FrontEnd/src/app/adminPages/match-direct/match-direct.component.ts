@@ -25,7 +25,6 @@ eqq:any={}
   handleSuccessfulResponse(response) {
     this.matches = response;
     this.liveMatches = this.matches.filter(one => one.status === "LIVE")
-    console.log(this.liveMatches)
   }
 
   editScore(event,selectedMatch:any){
@@ -36,7 +35,8 @@ eqq:any={}
       "phase": selectedMatch.phase,
       "equipes": selectedMatch.equipes,
       "scoreEquipe1":event,
-      "scoreEquipe2":selectedMatch.scoreEquipe2
+      "scoreEquipe2":selectedMatch.scoreEquipe2,
+      "dateMatch":selectedMatch.dateMatch
     }
     console.log(match);
     this.httpMatchsService.UpdateMatch(match).subscribe(data => {
@@ -53,7 +53,8 @@ eqq:any={}
       "phase": selectedMatch.phase,
       "equipes": selectedMatch.equipes,
       "scoreEquipe1":selectedMatch.scoreEquipe1,
-      "scoreEquipe2":event
+      "scoreEquipe2":event,
+      "dateMatch":selectedMatch.dateMatch
     }
     console.log(match);
     this.httpMatchsService.UpdateMatch(match).subscribe(data => {
@@ -63,21 +64,20 @@ eqq:any={}
   }
 
   terminateMatch(event,selectedMatch:any){
+    console.log(selectedMatch)
+
     var winner_id
     if(selectedMatch.scoreEquipe1==selectedMatch.scoreEquipe2){
       winner_id=null
-      console.log(winner_id)
     }
     if(selectedMatch.scoreEquipe1>selectedMatch.scoreEquipe2) 
     {
       winner_id=selectedMatch.equipes[0].equipe_id
-      console.log(winner_id)
     }
     else {
       if(selectedMatch.scoreEquipe1<selectedMatch.scoreEquipe2)
       {
         winner_id=selectedMatch.equipes[1].equipe_id
-        console.log(winner_id)
       }
     }
     if(winner_id!=null){
@@ -90,15 +90,18 @@ eqq:any={}
             "points": data.points
           }
           console.log(winnerEquipe)
+          winnerEquipe.points+=3
           this.eqq=winnerEquipe
+
+          this.httpEquipeService.UpdateEquipe(winnerEquipe).subscribe(
+            data=>{
+              console.log("UpdateEquipe of the winner "+data)
+          }
+        )
       }
     )
-    this.eqq.points+=3
-    this.httpEquipeService.UpdateEquipe(this.eqq).subscribe(
-      data=>{
-        console.log("UpdateEquipe of the winner "+data)
-    }
-  )  
+    console.log(this.eqq)
+  
 
   var match = {
     "match_id": selectedMatch.match_id,
@@ -108,15 +111,12 @@ eqq:any={}
     "phase": selectedMatch.phase,
     "equipes": selectedMatch.equipes,
     "scoreEquipe1":selectedMatch.scoreEquipe1,
-    "scoreEquipe2":selectedMatch.scoreEquipe2
+    "scoreEquipe2":selectedMatch.scoreEquipe2,
+    "dateMatch":selectedMatch.dateMatch
   }
-  console.log(match);
   this.httpMatchsService.UpdateMatch(match).subscribe(data => {
-    console.log("result from UpdateMatch :"+data);
     this.ngOnInit();
   })
-
-
     }
     else
     {
@@ -127,12 +127,13 @@ eqq:any={}
             "name": data.name,
             "points": data.points
           }
-          console.log(winnerEquipe)
+          winnerEquipe.points+=1
           this.eqq=winnerEquipe
+          this.httpEquipeService.UpdateEquipe(winnerEquipe).subscribe(data=>console.log(data)) 
       }
     )
-    this.eqq.points+=1
-    this.httpEquipeService.UpdateEquipe(this.eqq).subscribe(data=>console.log(data))  
+    
+
     this.httpEquipeService.getOneEquipe(selectedMatch.equipes[1].equipe_id).subscribe(
       data=>{
        var winnerEquipe={
@@ -140,12 +141,12 @@ eqq:any={}
           "name": data.name,
           "points": data.points
         }
-        console.log(winnerEquipe)
+        winnerEquipe.points+=1
         this.eqq=winnerEquipe
+        this.httpEquipeService.UpdateEquipe(winnerEquipe).subscribe(data=>console.log(data)) 
     }
   )
-  this.eqq.points+=1
-  this.httpEquipeService.UpdateEquipe(this.eqq).subscribe(data=>console.log(data))  
+   
     }
   }
 }
