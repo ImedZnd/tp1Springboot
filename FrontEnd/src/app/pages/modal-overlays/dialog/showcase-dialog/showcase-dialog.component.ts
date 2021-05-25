@@ -11,20 +11,12 @@ export class ShowcaseDialogComponent {
 
   @Input() title: string;
   @Input() matche: any;
+  @Input() equipe: any;
   @Input() event: any;
 
-  constructor(protected ref: NbDialogRef<ShowcaseDialogComponent>, private httpMatchService: HttpMatchsService) {}
-
-  delete(){
-    if(this.matche)
-    this.httpMatchService.DeleteMatch(this.matche.match_id).subscribe(data => {
-    });
-    this.ref.close();
-    this.event.confirm.resolve();
-  }
+  constructor(protected ref: NbDialogRef<ShowcaseDialogComponent>) {}
   
   dismiss() {
     this.ref.close();
-    this.event.confirm.reject();
   }
 }

@@ -35,10 +35,8 @@ INSERT INTO billet (billet_id,categorie,num_place,prix,match_id) VALUES (8,'norm
 INSERT INTO billet (billet_id,categorie,num_place,prix,match_id) VALUES (9,'normal','120',10,2);
 INSERT INTO billet (billet_id,categorie,num_place,prix,match_id) VALUES (10,'normal','25',10,2);
 INSERT INTO billet (billet_id,categorie,num_place,prix,match_id) VALUES (11,'VIP','12',10,3);
-INSERT INTO billet (billet_id,categorie,num_place,prix,match_id) VALUES (12,'VIP','52',10,4);
+INSERT INTO billet (billet_id,categorie,num_place,prix,match_id) VALUES (12,'VIP','52',10,3);
 INSERT INTO billet (billet_id,categorie,num_place,prix,match_id) VALUES (13,'normal','74',10,3);
-INSERT INTO billet (billet_id,categorie,num_place,prix,match_id) VALUES (14,'normal','321',10,4);
-INSERT INTO billet (billet_id,categorie,num_place,prix,match_id) VALUES (15,'normal','52',10,4);
 
 INSERT INTO spectateur (spectateur_id,age,cin,billet_id) VALUES (1,'20','98524152',1);
 INSERT INTO spectateur (spectateur_id,age,cin,billet_id) VALUES (2,'25','74185296',2);
@@ -109,4 +107,3 @@ INSERT INTO joueur (joueur_id,	name,equipe_id) VALUES (22,'rahim',7);
 INSERT INTO arbitre (arbitre_id,	name,match_id) VALUES (1,'achref',1);
 INSERT INTO arbitre (arbitre_id,	name,match_id) VALUES (2,'walid',2);
 INSERT INTO arbitre (arbitre_id,	name,match_id) VALUES (3,'karim',3);
-INSERT INTO arbitre (arbitre_id,	name,match_id) VALUES (4,'farid',4);

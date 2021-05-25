@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpEquipeService } from '../../services/http-equipe.service';
 import { findFlagUrlByCountryName, countries  } from 'country-flags-svg';
+import { NbDialogService } from '@nebular/theme';
+import { ShowcaseDialogComponent } from '../modal-overlays/dialog/showcase-dialog/showcase-dialog.component';
 
 @Component({
   selector: 'ngx-equipes',
@@ -11,7 +13,7 @@ export class EquipesComponent implements OnInit {
 
   flagUrl: any[] = [];
   equipes: any[] = [];
-  constructor(private httpEquipeService: HttpEquipeService) { }
+  constructor(private httpEquipeService: HttpEquipeService, private diaglog: NbDialogService) { }
 
   ngOnInit(): void {
     this.httpEquipeService.getEquipes().subscribe(data => this.handleSuccessfulResponse(data))
@@ -44,6 +46,17 @@ export class EquipesComponent implements OnInit {
       return flag;
     }
     return null;
+  }
+
+  showJouers(event,equipe){
+    console.log(equipe)
+    const diagRef = this.diaglog.open(ShowcaseDialogComponent, {
+      context:{
+        title: "Liste des Joueurs de : "+equipe.name,
+        equipe: equipe,
+      },
+      closeOnBackdropClick: false
+    }); 
   }
 
 }

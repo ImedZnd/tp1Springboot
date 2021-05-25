@@ -1,11 +1,14 @@
 <nb-card>
   <nb-card-header>{{ title }}</nb-card-header>
-  <nb-card-body *ngIf='matche != null'>
-    Are you sure to delete Match : <b>{{matche.name}}</b>
+  <nb-card-body *ngIf='equipe != null'>
+    <nb-list>
+        <nb-list-item *ngFor="let joueur of equipe.joueurs">
+          {{ joueur.name }}
+        </nb-list-item>
+      </nb-list>
   </nb-card-body>
   <nb-card-footer>
     <div class="d-inline p-5">
-    <button  nbButton hero status="danger" (click)="delete()">Confirm</button>
     <button  nbButton hero status="primary" (click)="dismiss()">Dismiss</button>
   </div>
   </nb-card-footer>

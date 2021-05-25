@@ -1,7 +1,5 @@
 <div class="row" *ngFor="let row of builRow()">
     <div class="col-6 col-md-4" *ngFor="let equipe of row">
-        <nb-flip-card>
-            <nb-card-front>
               <nb-card>
                 <nb-card-header style="text-align: center;">{{equipe.name}}</nb-card-header>
                 <nb-card-body>
@@ -10,16 +8,9 @@
                     </div>
                     <ng-template #elseB><div class="centerName">{{equipe.name}}</div></ng-template>
                 </nb-card-body>
+                <nb-card-footer style="text-align: center;">
+                  <button nbButton (click)="showJouers(event,equipe)">Joueurs</button>
+                </nb-card-footer>
               </nb-card>
-            </nb-card-front>
-            <nb-card-back>
-              <nb-card>
-                <nb-card-header>Joueurs</nb-card-header>
-                <nb-card-body>
-                    liste Joueurs
-                </nb-card-body>
-              </nb-card>
-            </nb-card-back>
-          </nb-flip-card>
     </div>
 </div>
